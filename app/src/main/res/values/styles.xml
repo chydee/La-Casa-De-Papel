@@ -3,12 +3,13 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorPrimary">@color/secondaryTextColor</item>
+        <item name="colorPrimaryDark">@color/secondaryTextColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
         <item name="android:showDividers">none</item>
         <item name="actionBarDivider">@android:color/transparent</item>
         <item name="android:textColor">@color/secondaryColor</item>
+        <item name="fontFamily">@font/poppins</item>
     </style>
 
 </resources>

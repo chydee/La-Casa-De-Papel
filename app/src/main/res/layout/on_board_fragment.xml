@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryDarkColor"
+    android:background="@color/secondaryTextColor"
     tools:context=".welcome.OnBoardFragment">
 
     <TextView
@@ -12,32 +12,57 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:elegantTextHeight="true"
         android:fontFamily="@font/poppins"
         android:padding="8dp"
-        android:text="Enter Your Nickname\nTo Continue"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:text="@string/enter_your_nnickname"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <EditText
+        android:id="@+id/edit_text_player_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:boxStrokeColor="@color/secondaryColor"
-        app:hintEnabled="false"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/secondaryLightColor"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:labelFor="@id/edit_text_player_name"
+        android:maxLength="12"
         app:layout_constraintEnd_toEndOf="@+id/intro_text_textview"
         app:layout_constraintStart_toStartOf="@+id/intro_text_textview"
-        app:layout_constraintTop_toBottomOf="@+id/intro_text_textview">
+        app:layout_constraintTop_toBottomOf="@+id/intro_text_textview" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/button_round"
+        android:src="@drawable/ic_go"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="@+id/edit_text_player_name"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_player_name"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_player_name" />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="100dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="600dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
