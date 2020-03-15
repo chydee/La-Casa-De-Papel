@@ -1,7 +1,8 @@
-package com.chydee.lacasadepapel
+package com.chydee.lacasadepapel.welcome
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.chydee.lacasadepapel.R
 
 class OnboardingActivity : AppCompatActivity() {
 
