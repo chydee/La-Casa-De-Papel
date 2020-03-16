@@ -7,6 +7,11 @@
     android:background="@color/secondaryTextColor"
     tools:context=".welcome.OnBoardFragment">
 
+    <nl.dionsegijn.konfetti.KonfettiView
+        android:id="@+id/viewKonfetti"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <TextView
         android:id="@+id/intro_text_textview"
         android:layout_width="match_parent"
@@ -42,12 +47,12 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/button_round"
+        android:contentDescription="@string/image_button_description"
         android:src="@drawable/ic_go"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="@+id/edit_text_player_name"
         app:layout_constraintStart_toStartOf="@+id/edit_text_player_name"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_player_name" />
-
 
 
     <androidx.constraintlayout.widget.Guideline
