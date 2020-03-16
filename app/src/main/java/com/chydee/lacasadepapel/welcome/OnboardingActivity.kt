@@ -10,8 +10,6 @@ class OnboardingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val binding: ActivityOnboardingBinding = ActivityOnboardingBinding.inflate(layoutInflater)
-
-
         setContentView(binding.root)
     }
 }
