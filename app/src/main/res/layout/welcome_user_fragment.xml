@@ -5,9 +5,4 @@
     android:layout_height="match_parent"
     tools:context=".welcome.WelcomeUserFragment">
 
-    <nl.dionsegijn.konfetti.KonfettiView
-        android:id="@+id/viewKonfetti"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
 </LinearLayout>

@@ -45,7 +45,5 @@ dependencies {
     // Core
     implementation "androidx.core:core:1.2.0"
 
-    implementation 'nl.dionsegijn:konfetti:1.2.0'
-
 
 }

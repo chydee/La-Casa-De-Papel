@@ -7,11 +7,6 @@
     android:background="@color/secondaryTextColor"
     tools:context=".welcome.OnBoardFragment">
 
-    <nl.dionsegijn.konfetti.KonfettiView
-        android:id="@+id/viewKonfetti"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <TextView
         android:id="@+id/intro_text_textview"
         android:layout_width="match_parent"
@@ -44,8 +39,8 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@drawable/button_round"
         android:contentDescription="@string/image_button_description"
         android:src="@drawable/ic_go"

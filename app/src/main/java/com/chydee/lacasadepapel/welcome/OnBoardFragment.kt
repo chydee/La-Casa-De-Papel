@@ -22,17 +22,6 @@ class OnBoardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.on_board_fragment, container, false)
-      val  viewKonfetti: KonfettiView = view.findViewById(R.id.viewKonfetti)
-        viewKonfetti.build()
-            .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
-            .setDirection(0.0, 359.0)
-            .setSpeed(1f, 5f)
-            .setFadeOutEnabled(true)
-            .setTimeToLive(5000L)
-            .addShapes(Shape.Square, Shape.Circle)
-            .addSizes(Size(12))
-            .setPosition(-50f, viewKonfetti.width + 50f, -50f, -50f)
-            .streamFor(300, 5000L)
 
         return view
     }
