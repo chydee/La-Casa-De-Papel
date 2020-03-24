@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="onBoardingViewModel"
+            type="com.chydee.lacasadepapel.welcome.OnBoardViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
