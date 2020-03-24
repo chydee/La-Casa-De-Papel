@@ -2,4 +2,8 @@
     <string name="app_name">Money Heist Trivia</string>
     <string name="enter_your_nnickname">Enter Your \nNickname</string>
     <string name="image_button_description">Image Button Description</string>
+    <string name="welcome_msg">Welcome</string>
+    <string name="default_score">0</string>
+    <string name="score">Score:</string>
+    <string name="bella_ciao">Bella Ciao</string>
 </resources>

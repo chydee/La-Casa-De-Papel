@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="welcomeViewModel"
+            type="com.chydee.lacasadepapel.welcome.WelcomeUserViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,6 +15,72 @@
         android:layout_height="match_parent"
         android:background="@color/secondaryTextColor"
         tools:context=".welcome.WelcomeUserFragment">
+
+        <TextView
+            android:id="@+id/welcome_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/press_start_2p"
+            android:letterSpacing="1"
+            android:text="@string/welcome_msg"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/player_name_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/press_start_2p"
+            android:letterSpacing="1"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            app:layout_constraintEnd_toEndOf="@+id/welcome_msg"
+            app:layout_constraintStart_toStartOf="@+id/welcome_msg"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_msg"
+            tools:text="Chydee" />
+
+        <TextView
+            android:id="@+id/highscore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/press_start_2p"
+            android:text="@string/score"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/player_name_textView"
+            app:layout_constraintStart_toStartOf="@+id/player_name_textView"
+            app:layout_constraintTop_toBottomOf="@+id/player_name_textView" />
+
+        <TextView
+            android:id="@+id/player_current_score"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/press_start_2p"
+            android:text="@string/default_score"
+            android:textAlignment="center"
+            android:textSize="80sp"
+            app:layout_constraintEnd_toEndOf="@+id/highscore"
+            app:layout_constraintStart_toStartOf="@+id/highscore"
+            app:layout_constraintTop_toBottomOf="@+id/highscore" />
+
+        <TextView
+            android:id="@+id/trade_mark"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/press_start_2p"
+            android:text="@string/bella_ciao"
+            android:textAlignment="center"
+            android:textColor="#b11226"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
