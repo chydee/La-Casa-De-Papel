@@ -1,13 +1,13 @@
 package com.chydee.lacasadepapel.welcome
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -35,13 +35,18 @@ class OnBoardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(OnBoardViewModel::class.java)
         playerName = binding.editTextPlayerName.text
-        binding.editTextPlayerName.doOnTextChanged { text, start, count, after ->
-            binding.continueButton.isEnabled = count != 0
-
-        }
         binding.continueButton.setOnClickListener {
-            addPlayer()
-            findNavController().navigate(OnBoardFragmentDirections.actionOnBoardFragmentToWelcomeUserFragment())
+            if (binding.editTextPlayerName.text.isEmpty() || binding.editTextPlayerName.text.toString() == "") {
+                binding.editTextPlayerName.backgroundTintList =
+                    ColorStateList.valueOf(resources.getColor(R.color.wineColor))
+                binding.editTextPlayerName.setError(
+                    "Required",
+                    resources.getDrawable(R.drawable.ic_error)
+                )
+            } else {
+                addPlayer()
+            }
+
         }
     }
 
@@ -58,6 +63,7 @@ class OnBoardFragment : Fragment() {
             .addOnSuccessListener { documentReference ->
                 savePlayerId(documentReference.id)
                 Log.d(TAG, "Player ${documentReference.id} has been added")
+                findNavController().navigate(OnBoardFragmentDirections.actionOnBoardFragmentToWelcomeUserFragment())
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Unable to add Player : ${exception.message}")
