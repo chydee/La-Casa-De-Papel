@@ -52,7 +52,7 @@
             android:layout_height="50dp"
             android:background="@drawable/button_round"
             android:contentDescription="@string/image_button_description"
-            android:src="@drawable/ic_go"
+            android:src="@drawable/ic_arrow"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="@+id/edit_text_player_name"
             app:layout_constraintStart_toStartOf="@+id/edit_text_player_name"
