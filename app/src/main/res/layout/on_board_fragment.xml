@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="onBoardingViewModel"
             type="com.chydee.lacasadepapel.welcome.OnBoardViewModel" />
@@ -51,6 +52,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/button_round"
+            android:clickable="false"
             android:contentDescription="@string/image_button_description"
             android:src="@drawable/ic_arrow"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"

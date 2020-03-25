@@ -7,4 +7,7 @@
     <string name="score">Score:</string>
     <string name="bella_ciao">Bella Ciao</string>
     <string name="start_game">Start Game</string>
+
+    <string name="defaultId">Player01</string>
+    <string name="id_key">PlayerUniqueId</string>
 </resources>

@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.databinding.WelcomeUserFragmentBinding
 
+
 @Suppress("DEPRECATION")
 class WelcomeUserFragment : Fragment() {
 
@@ -35,8 +36,17 @@ class WelcomeUserFragment : Fragment() {
         // Create and setup the {@link AudioManager} to request audio focus
         audioManager = activity!!.getSystemService(Context.AUDIO_SERVICE) as AudioManager
         requestFocus()
+        viewModel.getPlayerData(getPlayerId()!!)
 
         return binding.root
+    }
+
+    private fun getPlayerId(): String? {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+        val defaultValue = resources.getString(R.string.defaultId)
+        val id = sharedPref!!.getString(getString(R.string.id_key), defaultValue)
+
+        return id
     }
 
     private fun requestFocus() {
