@@ -27,4 +27,12 @@
         tools:layout="@layout/welcome_user_fragment">
         <action android:id="@+id/action_welcomeUserFragment_to_onBoardFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.chydee.lacasadepapel.game.GameFragment"
+        android:label="GameFragment" />
+    <fragment
+        android:id="@+id/gameResult"
+        android:name="com.chydee.lacasadepapel.game.GameResult"
+        android:label="GameResult" />
 </navigation>
