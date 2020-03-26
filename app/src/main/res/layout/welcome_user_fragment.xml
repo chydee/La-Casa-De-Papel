@@ -14,7 +14,7 @@
         android:id="@+id/welcome_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/secondaryTextColor"
+        style="@style/WelcomeTextStyle"
         tools:context=".welcome.WelcomeUserFragment">
 
         <TextView
@@ -25,6 +25,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/welcome_msg"
+            android:textColor="@color/secondaryTextColor"
             android:textAlignment="center"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,6 +36,7 @@
             android:id="@+id/player_name_textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textColor="@color/secondaryTextColor"
             android:layout_marginTop="50dp"
             android:fontFamily="@font/poppins_bold"
             android:textAlignment="center"
@@ -51,7 +53,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="@{welcomeViewModel._playerScore}"
+            android:text="@string/score"
+            android:textColor="@color/secondaryTextColor"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/player_name_textView"
@@ -62,9 +65,13 @@
             android:id="@+id/player_current_score"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="31dp"
             android:fontFamily="@font/poppins_bold"
             android:textAlignment="center"
+            android:textColor="@color/secondaryTextColor"
             android:textSize="80sp"
+            app:layout_constraintBottom_toTopOf="@+id/start_game_btn"
             app:layout_constraintEnd_toEndOf="@+id/highscore"
             app:layout_constraintStart_toStartOf="@+id/highscore"
             app:layout_constraintTop_toBottomOf="@+id/highscore" />
@@ -79,17 +86,17 @@
             android:padding="8dp"
             android:text="@string/start_game"
             android:textAllCaps="false"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/secondaryTextColor"
             android:textSize="25sp"
             app:icon="@drawable/ic_arrow"
             app:iconGravity="textEnd"
             app:iconPadding="16dp"
-            app:iconTint="#b11226"
+            app:iconTint="@color/wineColor"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/player_current_score"
-            app:strokeColor="@color/primaryTextColor" />
+            app:strokeColor="@color/secondaryTextColor" />
 
         <TextView
             android:id="@+id/trade_mark"

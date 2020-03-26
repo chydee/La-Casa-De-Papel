@@ -9,4 +9,7 @@
   <color name="primaryTextColor">#ffffff</color>
   <color name="secondaryTextColor">#000000</color>
   <color name="wineColor">#B11226</color>
+  <color name="milk">#fdfff5</color>
+  <color name="almost_black">#292929</color>
+  <color name="green">#008000</color>
 </resources>

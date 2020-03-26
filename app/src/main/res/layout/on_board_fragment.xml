@@ -14,7 +14,7 @@
         android:id="@+id/on_boarding_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/secondaryTextColor"
+        android:background="@color/milk"
         tools:context=".welcome.OnBoardFragment">
 
         <TextView
@@ -25,6 +25,7 @@
             android:layout_marginEnd="16dp"
             android:elegantTextHeight="true"
             android:fontFamily="@font/poppins"
+            android:textColor="@color/secondaryTextColor"
             android:padding="8dp"
             android:text="@string/enter_your_nnickname"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
@@ -38,12 +39,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:backgroundTint="@color/secondaryLightColor"
+            android:backgroundTint="@color/secondaryTextColor"
             android:importantForAutofill="no"
             android:inputType="text"
             android:labelFor="@id/edit_text_player_name"
             android:maxLength="12"
-            android:textColor="@color/secondaryLightColor"
+            android:textColor="@color/secondaryTextColor"
             app:layout_constraintEnd_toEndOf="@+id/intro_text_textview"
             app:layout_constraintStart_toStartOf="@+id/intro_text_textview"
             app:layout_constraintTop_toBottomOf="@+id/intro_text_textview" />
