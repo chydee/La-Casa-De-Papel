@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -83,22 +84,21 @@ class WelcomeUserFragment : Fragment() {
         audioManager = activity!!.getSystemService(Context.AUDIO_SERVICE) as AudioManager
         requestFocus()
         val get = viewModel.getPlayerData(getPlayerId()!!)
-        get.addOnSuccessListener { documentSnapshot ->
-                if (documentSnapshot != null) {
-                    Log.d("Welcome", "DocumentSnapshot data: ${documentSnapshot.data}")
-                    viewModel._playerName = documentSnapshot["name"].toString()
-                    val score = documentSnapshot.get("score")
-                    viewModel._playerScore = score!!.toString()
-                    binding.playerNameTextView.text = viewModel._playerName
-                    binding.playerCurrentScore.text = viewModel._playerScore
-                } else {
-                    Log.d("Welcome", "No such document")
-                }
+        get.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val document = task.result
+                Log.d("Welcome", "DocumentSnapshot data: $document")
+                viewModel._playerName =
+                    document?.get("name").toString()//documentSnapshot["name"].toString()
+                val score = document?.get("score")
+                viewModel._playerScore = score!!.toString()
+                binding.playerNameTextView.text = viewModel._playerName
+                binding.playerCurrentScore.text = viewModel._playerScore
+            } else {
+                Toast.makeText(context, "Profile Creation Cancelled", Toast.LENGTH_SHORT).show()
             }
+        }
 
-            .addOnFailureListener { exception ->
-                Log.d("Welcome", "get failed with ", exception)
-            }
     }
 
     private fun getPlayerId(): String? {
