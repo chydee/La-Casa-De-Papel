@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_onBoardFragment_to_welcomeUserFragment"
             app:destination="@id/welcomeUserFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit"
             app:popUpTo="@id/onBoardFragment"
             app:popUpToInclusive="true" />
     </fragment>
