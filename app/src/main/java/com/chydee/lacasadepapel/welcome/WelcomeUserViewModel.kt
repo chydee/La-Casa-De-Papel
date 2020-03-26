@@ -12,13 +12,7 @@ class WelcomeUserViewModel : ViewModel() {
     private var db: FirebaseFirestore = Firebase.firestore
 
     var _playerName = String()
-    val playerName: String
-        get() = _playerName
-
-
     var _playerScore = String()
-    val playerScore: String
-        get() = _playerScore
 
 
     fun getPlayerData(playerId: String): Task<DocumentSnapshot> {
