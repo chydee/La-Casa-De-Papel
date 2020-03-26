@@ -13,7 +13,7 @@
         <action
             android:id="@+id/action_onBoardFragment_to_welcomeUserFragment"
             app:destination="@id/welcomeUserFragment"
-            app:popUpTo="@id/welcomeUserFragment"
+            app:popUpTo="@id/onBoardFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -21,9 +21,6 @@
         android:name="com.chydee.lacasadepapel.welcome.WelcomeUserFragment"
         android:label="welcome_user_fragment"
         tools:layout="@layout/welcome_user_fragment">
-        <action
-            android:id="@+id/action_welcomeUserFragment_to_onBoardFragment"
-            app:destination="@id/onBoardFragment"
-            app:popUpToInclusive="true" />
+        <action android:id="@+id/action_welcomeUserFragment_to_onBoardFragment" />
     </fragment>
 </navigation>
