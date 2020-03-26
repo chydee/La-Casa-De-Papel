@@ -7,6 +7,7 @@ import android.media.MediaPlayer
 import android.media.MediaPlayer.OnCompletionListener
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,56 +24,7 @@ class WelcomeUserFragment : Fragment() {
     private lateinit var viewModel: WelcomeUserViewModel
     private var mediaPlayer: MediaPlayer? = null
     private var audioManager: AudioManager? = null
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding: WelcomeUserFragmentBinding =
-            DataBindingUtil.inflate(inflater, R.layout.welcome_user_fragment, container, false)
-        // Specify the current activity as the lifecycle owner of the binding. This is used so that
-        // the binding can observe LiveData updates
-        binding.lifecycleOwner = this
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(WelcomeUserViewModel::class.java)
-        // Create and setup the {@link AudioManager} to request audio focus
-        audioManager = activity!!.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        requestFocus()
-        viewModel.getPlayerData(getPlayerId()!!)
-    }
-
-    private fun getPlayerId(): String? {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
-        val id = sharedPref!!.getString(getString(R.string.id_key), "")
-        return id
-    }
-
-    private fun requestFocus() {
-        // Request audio focus so in order to play the audio file. The app needs to play a
-        // short audio file, so we will request audio focus with a short amount of time
-        // with AUDIOFOCUS_GAIN_TRANSIENT.
-        val result: Int = audioManager!!.requestAudioFocus(
-            mOnAudioFocusChangeListener,
-            AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT
-        )
-
-        if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-            // We have audio focus now.
-
-            // Create and setup the {@link MediaPlayer} for the audio resource associated
-            // with the current word
-            mediaPlayer = MediaPlayer.create(context, R.raw.intro)
-            mediaPlayer!!.start() // no need to call prepare(); create() does that for you
-
-            // Setup a listener on the media player, so that we can stop and release the
-            // media player once the sound has finished playing.
-            mediaPlayer!!.setOnCompletionListener(mCompletionListener)
-        }
-    }
+    private lateinit var binding: WelcomeUserFragmentBinding
 
     /**
      * This listener gets triggered whenever the audio focus changes
@@ -103,6 +55,81 @@ class WelcomeUserFragment : Fragment() {
         }
 
     /**
+     * This listener gets triggered when the [MediaPlayer] has completed
+     * playing the audio file.
+     */
+    private val mCompletionListener =
+        OnCompletionListener { // Now that the sound file has finished playing, release the media player resources.
+            releaseMediaPlayer()
+        }
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.welcome_user_fragment, container, false)
+        // Specify the current activity as the lifecycle owner of the binding. This is used so that
+        // the binding can observe LiveData updates
+        binding.lifecycleOwner = this
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(WelcomeUserViewModel::class.java)
+        // Create and setup the {@link AudioManager} to request audio focus
+        audioManager = activity!!.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        requestFocus()
+        val get = viewModel.getPlayerData(getPlayerId()!!)
+        get.addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot != null) {
+                    Log.d("Welcome", "DocumentSnapshot data: ${documentSnapshot.data}")
+                    viewModel._playerName = documentSnapshot["name"].toString()
+                    val score = documentSnapshot.get("score")
+                    viewModel._playerScore = score!!.toString()
+                    binding.playerNameTextView.text = viewModel._playerName
+                    binding.playerCurrentScore.text = viewModel._playerScore
+                } else {
+                    Log.d("Welcome", "No such document")
+                }
+            }
+
+            .addOnFailureListener { exception ->
+                Log.d("Welcome", "get failed with ", exception)
+            }
+    }
+
+    private fun getPlayerId(): String? {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+        return sharedPref!!.getString(getString(R.string.id_key), "")
+    }
+
+    private fun requestFocus() {
+        // Request audio focus so in order to play the audio file. The app needs to play a
+        // short audio file, so we will request audio focus with a short amount of time
+        // with AUDIOFOCUS_GAIN_TRANSIENT.
+        val result: Int = audioManager!!.requestAudioFocus(
+            mOnAudioFocusChangeListener,
+            AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT
+        )
+
+        if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+            // We have audio focus now.
+
+            // Create and setup the {@link MediaPlayer} for the audio resource associated
+            // with the current word
+            mediaPlayer = MediaPlayer.create(context, R.raw.intro)
+            mediaPlayer!!.start() // no need to call prepare(); create() does that for you
+
+            // Setup a listener on the media player, so that we can stop and release the
+            // media player once the sound has finished playing.
+            mediaPlayer!!.setOnCompletionListener(mCompletionListener)
+        }
+    }
+
+    /**
      * Clean up the media player by releasing its resources.
      */
     private fun releaseMediaPlayer() {
@@ -123,20 +150,6 @@ class WelcomeUserFragment : Fragment() {
                 audioManager!!.abandonAudioFocus(mOnAudioFocusChangeListener)
             }
         }
-    }
-
-    /**
-     * This listener gets triggered when the [MediaPlayer] has completed
-     * playing the audio file.
-     */
-    private val mCompletionListener =
-        OnCompletionListener { // Now that the sound file has finished playing, release the media player resources.
-            releaseMediaPlayer()
-        }
-
-    override fun onResume() {
-        super.onResume()
-        requestFocus()
     }
 
     override fun onStop() {
