@@ -18,8 +18,6 @@ class OnboardingActivity : AppCompatActivity() {
         val id = sharedPref!!.getString(getString(R.string.id_key), "")
         val navController =
             Navigation.findNavController(this@OnboardingActivity, R.id.on_boarding_nav_host)
-
-        // Toast.makeText(applicationContext, id, Toast.LENGTH_LONG).show()
         if (id?.isEmpty()!! || id == "") {
             navController.navigate(R.id.action_welcomeUserFragment_to_onBoardFragment)
         } else {
