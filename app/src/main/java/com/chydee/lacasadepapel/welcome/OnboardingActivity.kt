@@ -3,6 +3,7 @@ package com.chydee.lacasadepapel.welcome
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.ActivityNavigator
 import androidx.navigation.Navigation
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.databinding.ActivityOnboardingBinding
@@ -22,5 +23,10 @@ class OnboardingActivity : AppCompatActivity() {
             navController.navigate(R.id.action_onBoardFragment_to_welcomeUserFragment)
             return
         }
+    }
+
+    override fun finish() {
+        super.finish()
+        ActivityNavigator.applyPopAnimationsToPendingTransition(this)
     }
 }
