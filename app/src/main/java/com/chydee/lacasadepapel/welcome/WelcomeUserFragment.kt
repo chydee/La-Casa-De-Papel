@@ -30,7 +30,9 @@ class WelcomeUserFragment : Fragment() {
     ): View? {
         val binding: WelcomeUserFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.welcome_user_fragment, container, false)
-
+        // Specify the current activity as the lifecycle owner of the binding. This is used so that
+        // the binding can observe LiveData updates
+        binding.lifecycleOwner = this
         return binding.root
     }
 
@@ -40,7 +42,7 @@ class WelcomeUserFragment : Fragment() {
         // Create and setup the {@link AudioManager} to request audio focus
         audioManager = activity!!.getSystemService(Context.AUDIO_SERVICE) as AudioManager
         requestFocus()
-        //viewModel.getPlayerData(getPlayerId()!!)
+        viewModel.getPlayerData(getPlayerId()!!)
     }
 
     private fun getPlayerId(): String? {
@@ -132,19 +134,14 @@ class WelcomeUserFragment : Fragment() {
             releaseMediaPlayer()
         }
 
-    override fun onPause() {
-        super.onPause()
-        mediaPlayer!!.pause()
+    override fun onResume() {
+        super.onResume()
+        requestFocus()
     }
 
     override fun onStop() {
         super.onStop()
         releaseMediaPlayer()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mediaPlayer!!.start()
     }
 
 
