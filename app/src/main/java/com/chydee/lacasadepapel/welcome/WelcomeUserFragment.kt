@@ -15,8 +15,10 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.chydee.lacasadepapel.Player
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.databinding.WelcomeUserFragmentBinding
+import com.google.firebase.firestore.ktx.toObject
 
 
 @Suppress("DEPRECATION")
@@ -86,11 +88,10 @@ class WelcomeUserFragment : Fragment() {
         val get = viewModel.getPlayerData(getPlayerId()!!)
         get.addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                val document = task.result
+                val document = task.result?.toObject<Player>()
                 Log.d("Welcome", "DocumentSnapshot data: $document")
-                viewModel._playerName =
-                    document?.get("name").toString()//documentSnapshot["name"].toString()
-                val score = document?.get("score")
+                viewModel._playerName = document?.name!!//documentSnapshot["name"].toString()
+                val score = document.score
                 viewModel._playerScore = score!!.toString()
                 binding.playerNameTextView.text = viewModel._playerName
                 binding.playerCurrentScore.text = viewModel._playerScore
