@@ -31,21 +31,21 @@ class WelcomeUserFragment : Fragment() {
         val binding: WelcomeUserFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.welcome_user_fragment, container, false)
 
-        viewModel = ViewModelProvider(this).get(WelcomeUserViewModel::class.java)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(WelcomeUserViewModel::class.java)
         // Create and setup the {@link AudioManager} to request audio focus
         audioManager = activity!!.getSystemService(Context.AUDIO_SERVICE) as AudioManager
         requestFocus()
-        viewModel.getPlayerData(getPlayerId()!!)
-
-        return binding.root
+        //viewModel.getPlayerData(getPlayerId()!!)
     }
 
     private fun getPlayerId(): String? {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
-        val defaultValue = resources.getString(R.string.defaultId)
-        val id = sharedPref!!.getString(getString(R.string.id_key), defaultValue)
-
+        val id = sharedPref!!.getString(getString(R.string.id_key), "")
         return id
     }
 
