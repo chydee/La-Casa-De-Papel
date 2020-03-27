@@ -4,8 +4,9 @@
         <shape>
             <solid android:color="@color/primaryColor" />
             <!--<stroke android:width="5dp" android:color="@color/wineColor" />-->
-            <corners android:bottomLeftRadius="100dp" android:bottomRightRadius="100dp" />
-            <padding android:bottom="50dp" android:left="50dp" android:right="50dp" android:top="80dp" />
+            <corners android:bottomLeftRadius="200dp" android:bottomRightRadius="0dp" />
+            <padding android:bottom="50dp" android:left="8dp" android:right="8dp" android:top="30dp" />
+            <gradient android:endColor="@color/secondaryTextColor" android:startColor="@color/primaryColor" />
         </shape>
     </item>
 </selector>

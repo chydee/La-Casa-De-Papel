@@ -107,6 +107,10 @@
             android:textAlignment="center"
             android:textColor="@color/primaryColor"
             android:textSize="20sp"
+            android:shadowColor="@color/primaryDarkColor"
+            android:shadowDx="-8"
+            android:shadowDy="-4"
+            android:shadowRadius="5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

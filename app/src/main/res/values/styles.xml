@@ -15,7 +15,7 @@
     </style>
 
     <style name="WelcomeTextStyle">
-        <item name="android:background">@color/milk</item>
+        <item name="android:background">@color/secondaryColor</item>
     </style>
 
 </resources>

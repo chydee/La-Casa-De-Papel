@@ -41,7 +41,7 @@ class OnBoardFragment : Fragment() {
         binding.continueButton.setOnClickListener {
             if (binding.editTextPlayerName.text.isEmpty() || binding.editTextPlayerName.text.toString() == "") {
                 binding.editTextPlayerName.backgroundTintList =
-                    ColorStateList.valueOf(resources.getColor(R.color.wineColor))
+                    ColorStateList.valueOf(resources.getColor(R.color.primaryColor))
                 binding.editTextPlayerName.setError(
                     "Required",
                     resources.getDrawable(R.drawable.ic_error)
