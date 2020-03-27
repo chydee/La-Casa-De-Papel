@@ -59,5 +59,8 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-firestore-ktx:21.4.1'
 
+    //Lottie
+    implementation "com.airbnb.android:lottie:$lottie_version"
+
 
 }
