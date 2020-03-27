@@ -25,12 +25,18 @@
         android:name="com.chydee.lacasadepapel.welcome.WelcomeUserFragment"
         android:label="welcome_user_fragment"
         tools:layout="@layout/welcome_user_fragment">
-        <action android:id="@+id/action_welcomeUserFragment_to_onBoardFragment" />
+        <action
+            android:id="@+id/action_welcomeUserFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.chydee.lacasadepapel.game.GameFragment"
-        android:label="GameFragment" />
+        android:label="GameFragment">
+        <action
+            android:id="@+id/action_gameFragment_to_gameResult"
+            app:destination="@id/gameResult" />
+    </fragment>
     <fragment
         android:id="@+id/gameResult"
         android:name="com.chydee.lacasadepapel.game.GameResult"

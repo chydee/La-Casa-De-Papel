@@ -22,10 +22,4 @@ class WelcomeUserViewModel : ViewModel() {
         return docRef.get(source)
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        onCleared()
-    }
-
-
 }

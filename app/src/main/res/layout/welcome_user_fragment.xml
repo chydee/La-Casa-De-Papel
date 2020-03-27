@@ -91,12 +91,12 @@
             app:icon="@drawable/ic_arrow"
             app:iconGravity="textEnd"
             app:iconPadding="16dp"
-            app:iconTint="@color/wineColor"
+            app:iconTint="@color/primaryColor"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/player_current_score"
-            app:strokeColor="@color/secondaryTextColor" />
+            app:strokeColor="@color/primaryColor" />
 
         <TextView
             android:id="@+id/trade_mark"
@@ -105,7 +105,7 @@
             android:fontFamily="@font/poppins_bold"
             android:text="@string/bella_ciao"
             android:textAlignment="center"
-            android:textColor="#b11226"
+            android:textColor="@color/primaryColor"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

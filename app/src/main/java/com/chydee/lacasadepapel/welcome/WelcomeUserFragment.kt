@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.chydee.lacasadepapel.Player
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.databinding.WelcomeUserFragmentBinding
@@ -98,6 +99,10 @@ class WelcomeUserFragment : Fragment() {
             } else {
                 Toast.makeText(context, "Profile Creation Cancelled", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.startGameBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_welcomeUserFragment_to_gameFragment)
         }
 
     }

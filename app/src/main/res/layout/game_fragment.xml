@@ -10,57 +10,110 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/secondaryTextColor"
+        android:background="@color/secondaryColor"
+        android:clipToPadding="true"
         tools:context=".game.GameFragment">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/card"
+            android:clipToPadding="true"
+            android:elevation="10dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/question_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:padding="8dp"
+                android:shadowColor="@color/secondaryTextColor"
+                android:shadowDx="-4"
+                android:shadowDy="-4"
+                android:shadowRadius="2"
+                android:text="Who is the father, mother, brother, sisetr, uncle, familiar, of the la professor?"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+                android:textColor="@color/secondaryColor"
+                android:textSize="25sp" />
+        </LinearLayout>
 
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/card"
             android:orientation="vertical"
-            android:padding="30dp"
+            android:padding="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline5">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_first_answer"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_default"
                 android:fontFamily="@font/poppins_semibold"
+                android:padding="8dp"
+                android:text="Option A"
                 android:textAllCaps="false"
                 android:textColor="@color/secondaryTextColor"
-                tools:text="Option B" />
+                android:textSize="18sp"
+                app:cornerRadius="20dp"
+                app:strokeColor="@color/secondaryTextColor" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_second_answer"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_default"
                 android:fontFamily="@font/poppins_semibold"
+                android:padding="8dp"
+                android:text="Option B"
                 android:textAllCaps="false"
                 android:textColor="@color/secondaryTextColor"
-                tools:text="Option A" />
+                android:textSize="18sp"
+                app:cornerRadius="20dp"
+                app:strokeColor="@color/secondaryTextColor" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_third_answer"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_default"
                 android:fontFamily="@font/poppins_semibold"
+                android:padding="8dp"
+                android:text="Option C"
                 android:textAllCaps="false"
                 android:textColor="@color/secondaryTextColor"
-                tools:text="Option C" />
+                android:textSize="18sp"
+                app:cornerRadius="20dp"
+                app:strokeColor="@color/secondaryTextColor" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_fourth_answer"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_default"
                 android:fontFamily="@font/poppins_semibold"
+                android:padding="8dp"
+                android:text="Option D"
                 android:textAllCaps="false"
                 android:textColor="@color/secondaryTextColor"
-                tools:text="Option D" />
+                android:textSize="18sp"
+                app:cornerRadius="20dp"
+                app:strokeColor="@color/secondaryTextColor" />
 
         </LinearLayout>
 
@@ -69,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="50dp" />
+            app:layout_constraintGuide_begin="356dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
