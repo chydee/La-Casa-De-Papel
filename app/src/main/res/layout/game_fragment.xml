@@ -73,6 +73,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/question_text_view"
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="timer_bomb.json"
+                app:lottie_speed="1"
                 app:lottie_loop="true" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
