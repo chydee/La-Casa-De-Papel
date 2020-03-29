@@ -45,24 +45,24 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
-        <!-- <com.airbnb.lottie.LottieAnimationView
+        <com.airbnb.lottie.LottieAnimationView
              android:id="@+id/arrow_down"
-             android:layout_width="80dp"
-             android:layout_height="80dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
              android:scaleType="centerCrop"
              app:layout_constraintEnd_toEndOf="parent"
              app:layout_constraintStart_toStartOf="parent"
              app:layout_constraintTop_toBottomOf="@+id/textView2"
              app:lottie_autoPlay="true"
-             app:lottie_fileName="timer_bomb.json"
+            app:lottie_fileName="arrow_down.json"
              app:lottie_loop="true"
-             app:lottie_speed="1" />-->
+            app:lottie_speed="1" />
 
         <Button
             android:id="@+id/score_view"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:backgroundTint="@android:color/transparent"
             android:elevation="0dp"
             android:fontFamily="@font/poppins_bold"
@@ -72,9 +72,9 @@
             app:icon="@drawable/ic_euro"
             app:iconGravity="textEnd"
             app:iconTint="@null"
-            app:layout_constraintEnd_toEndOf="@+id/textView2"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintEnd_toEndOf="@+id/arrow_down"
+            app:layout_constraintStart_toStartOf="@+id/arrow_down"
+            app:layout_constraintTop_toBottomOf="@+id/arrow_down" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline6"
