@@ -23,6 +23,8 @@ class GameFragment : Fragment() {
     private var currentQuestion: Quiz? = null
     private var questionId = 0
     private var isCancelled = false
+    private var score = 0
+    private var scoreIncrement = 5
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -105,6 +107,8 @@ class GameFragment : Fragment() {
     private fun checkAnswer(answer: String): Boolean {
         if (currentQuestion?.answer?.equals(answer)!!) {
             //TODO Increment Score, and set the score
+            score += scoreIncrement
+            binding.scoreView.text = "$score"
             return true
         }
         return false
