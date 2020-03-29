@@ -138,6 +138,7 @@
                 android:textSize="18sp"
                 app:cornerRadius="20dp"
                 app:strokeColor="@color/secondaryTextColor"
+                app:strokeWidth="2dp"
                 tools:text="Option B" />
 
             <com.google.android.material.button.MaterialButton
@@ -152,6 +153,7 @@
                 android:textSize="18sp"
                 app:cornerRadius="20dp"
                 app:strokeColor="@color/secondaryTextColor"
+                app:strokeWidth="2dp"
                 tools:text="Option C" />
 
             <com.google.android.material.button.MaterialButton
@@ -166,6 +168,7 @@
                 android:textSize="18sp"
                 app:cornerRadius="20dp"
                 app:strokeColor="@color/secondaryTextColor"
+                app:strokeWidth="2dp"
                 tools:text="Option D" />
 
         </LinearLayout>
