@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.databinding.GameResultFragmentBinding
@@ -31,6 +32,10 @@ class GameResult : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(GameResultViewModel::class.java)
         binding.scoreView.text = args.point.toString()
+
+        binding.playAgain.setOnClickListener {
+            findNavController().navigate(GameResultDirections.actionGameResultToWelcomeUserFragment())
+        }
     }
 
 }

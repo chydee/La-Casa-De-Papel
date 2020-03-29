@@ -71,7 +71,7 @@
             android:backgroundTint="@android:color/transparent"
             android:elevation="0dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="0"
+            tools:text="0"
             android:textColor="@color/secondaryTextColor"
             android:textSize="80sp"
             app:icon="@drawable/ic_euro"
