@@ -53,6 +53,10 @@ class GameFragment : Fragment() {
             setupQuizView()
             setupButtons()
         }
+
+        binding.quitQuizButton.setOnClickListener {
+            findNavController().popBackStack(R.id.welcome_fragment, true)
+        }
     }
 
     private fun setupQuizView() {
@@ -118,6 +122,7 @@ class GameFragment : Fragment() {
     private fun showNextQuiz() {
         if (questionId < quizes.size) {
             currentQuestion = quizes[questionId]
+            quizes.shuffle()
             setupQuizView()
         } else {
             isCancelled = true
