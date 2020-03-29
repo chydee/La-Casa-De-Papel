@@ -27,7 +27,12 @@
         tools:layout="@layout/welcome_user_fragment">
         <action
             android:id="@+id/action_welcomeUserFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            app:destination="@id/gameFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_close_exit" />
+        <action
+            android:id="@+id/action_welcomeUserFragment_to_leaderBoardFragment"
+            app:destination="@id/leaderBoardFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -35,10 +40,30 @@
         android:label="GameFragment">
         <action
             android:id="@+id/action_gameFragment_to_gameResult"
-            app:destination="@id/gameResult" />
+            app:destination="@id/gameResult"
+            app:enterAnim="@anim/fragment_fast_out_extra_slow_in"
+            app:exitAnim="@anim/fragment_fast_out_extra_slow_in" />
+        <action
+            android:id="@+id/action_gameFragment_to_welcomeUserFragment"
+            app:destination="@id/welcomeUserFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
     </fragment>
     <fragment
         android:id="@+id/gameResult"
         android:name="com.chydee.lacasadepapel.game.GameResult"
-        android:label="GameResult" />
+        android:label="GameResult">
+        <action
+            android:id="@+id/action_gameResult_to_welcomeUserFragment"
+            app:destination="@id/welcomeUserFragment" />
+        <action
+            android:id="@+id/action_gameResult_to_leaderBoardFragment"
+            app:destination="@id/leaderBoardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/leaderBoardFragment"
+        android:name="com.chydee.lacasadepapel.ranking.LeaderBoardFragment"
+        android:label="LeaderBoardFragment" />
 </navigation>

@@ -4,7 +4,7 @@
     <string name="image_button_description">Image Button Description</string>
     <string name="welcome_msg">Welcome</string>
     <string name="default_score">0</string>
-    <string name="score">Score:</string>
+    <string name="score">Highest Score</string>
     <string name="bella_ciao">Bella Ciao</string>
     <string name="start_game">Start Game</string>
 
