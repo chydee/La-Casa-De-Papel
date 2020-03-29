@@ -81,6 +81,23 @@
             app:layout_constraintStart_toStartOf="@+id/arrow_down"
             app:layout_constraintTop_toBottomOf="@+id/arrow_down" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/play_again"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:padding="8dp"
+            android:text="@string/play_again"
+            android:textAllCaps="true"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline6"
             android:layout_width="wrap_content"
@@ -93,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="680dp" />
+            app:layout_constraintGuide_begin="600dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

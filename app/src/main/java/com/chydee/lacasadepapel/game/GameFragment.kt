@@ -122,7 +122,11 @@ class GameFragment : Fragment() {
         } else {
             isCancelled = true
             val points = binding.scoreView.text.toString().toInt()
-            findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameResult())
+            findNavController().navigate(
+                GameFragmentDirections.actionGameFragmentToGameResult(
+                    point = points
+                )
+            )
         }
     }
 

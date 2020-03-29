@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.databinding.GameResultFragmentBinding
 
 class GameResult : Fragment() {
+
+    val args: GameResultArgs by navArgs()
 
     private lateinit var viewModel: GameResultViewModel
     private lateinit var binding: GameResultFragmentBinding
@@ -27,7 +30,7 @@ class GameResult : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(GameResultViewModel::class.java)
-
+        binding.scoreView.text = args.point.toString()
     }
 
 }
