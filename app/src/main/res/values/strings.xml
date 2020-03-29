@@ -10,4 +10,5 @@
 
     <string name="id_key">PlayerUniqueId</string>
     <string name="game_over">Game Over!</string>
+    <string name="your_point">Your Point</string>
 </resources>

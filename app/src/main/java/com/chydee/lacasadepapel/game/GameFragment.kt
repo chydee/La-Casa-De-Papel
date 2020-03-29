@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.chydee.lacasadepapel.Quiz
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.databinding.GameFragmentBinding
@@ -120,7 +121,8 @@ class GameFragment : Fragment() {
             setupQuizView()
         } else {
             isCancelled = true
-            //findNavController().
+            val points = binding.scoreView.text.toString().toInt()
+            findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameResult())
         }
     }
 

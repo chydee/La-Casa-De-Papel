@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -12,6 +13,7 @@
         tools:context=".game.GameResult">
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
@@ -22,21 +24,65 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
             android:textColor="@color/secondaryTextColor"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
-        <!--<com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/particle_explosion"
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/your_point"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+        <!-- <com.airbnb.lottie.LottieAnimationView
+             android:id="@+id/arrow_down"
+             android:layout_width="80dp"
+             android:layout_height="80dp"
+             android:scaleType="centerCrop"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/textView2"
+             app:lottie_autoPlay="true"
+             app:lottie_fileName="timer_bomb.json"
+             app:lottie_loop="true"
+             app:lottie_speed="1" />-->
+
+        <Button
+            android:id="@+id/score_view"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:scaleType="centerCrop"
+            android:layout_height="200dp"
+            android:backgroundTint="@android:color/transparent"
+            android:elevation="0dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="0"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="80sp"
+            app:icon="@drawable/ic_euro"
+            app:iconGravity="textEnd"
+            app:iconTint="@null"
+            app:layout_constraintEnd_toEndOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="timer_bomb.json"
-            app:lottie_loop="true"
-            app:lottie_speed="0.4" />-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="80dp" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
