@@ -120,7 +120,7 @@ class GameFragment : Fragment() {
             setupQuizView()
         } else {
             isCancelled = true
-            //TODO To GameResult
+            //findNavController().
         }
     }
 

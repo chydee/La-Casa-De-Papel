@@ -42,7 +42,9 @@
             android:id="@+id/action_gameFragment_to_gameResult"
             app:destination="@id/gameResult"
             app:enterAnim="@anim/fragment_fast_out_extra_slow_in"
-            app:exitAnim="@anim/fragment_fast_out_extra_slow_in" />
+            app:exitAnim="@anim/fragment_fast_out_extra_slow_in"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_gameFragment_to_welcomeUserFragment"
             app:destination="@id/welcomeUserFragment"
@@ -61,6 +63,10 @@
         <action
             android:id="@+id/action_gameResult_to_leaderBoardFragment"
             app:destination="@id/leaderBoardFragment" />
+        <argument
+            android:name="score"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/leaderBoardFragment"

@@ -9,4 +9,5 @@
     <string name="start_game">Start Game</string>
 
     <string name="id_key">PlayerUniqueId</string>
+    <string name="game_over">Game Over!</string>
 </resources>

@@ -93,7 +93,7 @@
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="timer_bomb.json"
                 app:lottie_loop="true"
-                app:lottie_speed="0.25" />
+                app:lottie_speed="0.4" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
