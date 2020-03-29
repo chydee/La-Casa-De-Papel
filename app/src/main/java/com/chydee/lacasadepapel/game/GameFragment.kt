@@ -2,7 +2,6 @@ package com.chydee.lacasadepapel.game
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,8 +37,6 @@ class GameFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
         quizes = ArrayList()
         viewModel.getQuiz().addOnSuccessListener { documents ->
-
-            Log.d("QUIZES", "${documents.documents}")
             for (docs in documents) {
                 quizes.add(
                     Quiz(
