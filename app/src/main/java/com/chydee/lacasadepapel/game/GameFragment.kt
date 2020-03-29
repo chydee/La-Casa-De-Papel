@@ -49,9 +49,6 @@ class GameFragment : Fragment() {
                     )
                 )
             }
-            Log.d("Welcome", "Size: ${quizes.size}")
-            Log.d("Welcome", "Question: ${quizes[0].question}")
-            Log.d("Welcome", "Options Size: ${quizes[0].options.size}")
             currentQuestion = quizes[questionId]
             setupQuizView()
             setupButtons()
