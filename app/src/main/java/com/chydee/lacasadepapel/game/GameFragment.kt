@@ -1,7 +1,9 @@
 package com.chydee.lacasadepapel.game
 
+import android.animation.Animator
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +17,7 @@ import com.chydee.lacasadepapel.databinding.GameFragmentBinding
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.parcel.RawValue
 import java.util.*
+
 
 class GameFragment : Fragment() {
     private lateinit var viewModel: GameViewModel
@@ -53,10 +56,42 @@ class GameFragment : Fragment() {
             setupQuizView()
             setupButtons()
         }
-
+        setUpTimerAnimation()
         binding.quitQuizButton.setOnClickListener {
             findNavController().popBackStack(R.id.welcome_fragment, true)
         }
+    }
+
+    private fun setUpTimerAnimation() {
+        binding.timeBomb.progress = 0F
+        binding.timeBomb.pauseAnimation()
+        binding.timeBomb.playAnimation()
+        binding.timeBomb.addAnimatorListener(object :
+            Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator) {
+                Log.e("Animation:", "start")
+            }
+
+            override fun onAnimationEnd(animation: Animator) {
+                Log.e("Animation:", "end")
+                //Your code for remove the fragment
+                val points = binding.scoreView.text.toString().toInt()
+                findNavController().navigate(
+                    GameFragmentDirections.actionGameFragmentToGameResult(
+                        point = points
+                    )
+                )
+
+            }
+
+            override fun onAnimationCancel(animation: Animator) {
+                Log.e("Animation:", "cancel")
+            }
+
+            override fun onAnimationRepeat(animation: Animator) {
+                Log.e("Animation:", "repeat")
+            }
+        })
     }
 
     private fun setupQuizView() {
