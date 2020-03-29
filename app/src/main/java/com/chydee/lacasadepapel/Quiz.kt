@@ -2,11 +2,12 @@ package com.chydee.lacasadepapel
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
 
 @Parcelize
 data class Quiz(
-    val question: String,
-    val options: List<String>,
-    val answer: String
+    val question: @RawValue Any?,
+    val options: @RawValue List<Any?>,
+    val answer: @RawValue Any?
 ) : Parcelable
