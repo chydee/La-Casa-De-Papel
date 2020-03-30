@@ -32,6 +32,7 @@ class GameFragment : Fragment() {
     private var score = 0
     private var scoreIncrement = 5
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
