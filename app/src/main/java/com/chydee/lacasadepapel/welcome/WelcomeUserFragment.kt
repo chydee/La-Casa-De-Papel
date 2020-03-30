@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -78,6 +79,22 @@ class WelcomeUserFragment : Fragment() {
         // the binding can observe LiveData updates
         binding.lifecycleOwner = this
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // This callback will only be called when MyFragment is at least Started.
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    // findNavController().navigate(GameResultDirections.actionGameResultToWelcomeUserFragment())
+                    findNavController().popBackStack(R.id.on_boarding_fragment, true)
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
+        // The callback can be enabled or disabled here or in the lambda
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

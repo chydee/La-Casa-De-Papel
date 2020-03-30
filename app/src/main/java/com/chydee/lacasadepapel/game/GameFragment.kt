@@ -7,9 +7,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.chydee.lacasadepapel.Quiz
 import com.chydee.lacasadepapel.R
@@ -26,9 +28,25 @@ class GameFragment : Fragment() {
 
     private var currentQuestion: Quiz? = null
     private var questionId = 0
-    private var isCancelled = false
     private var score = 0
     private var scoreIncrement = 5
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // This callback will only be called when MyFragment is at least Started.
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    // findNavController().navigate(GameResultDirections.actionGameResultToWelcomeUserFragment())
+                    findNavController().popBackStack(R.id.welcome_fragment, false)
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
+        // The callback can be enabled or disabled here or in the lambda
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,13 +70,18 @@ class GameFragment : Fragment() {
                     )
                 )
             }
-            currentQuestion = quizes[questionId]
-            setupQuizView()
-            setupButtons()
+            try {
+                currentQuestion = quizes[questionId]
+                setupQuizView()
+                setupButtons()
+            } catch (e: IndexOutOfBoundsException) {
+                Log.d("QUESTIONS", "IndexOutOfBound ${quizes.size}")
+            }
+
         }
         setUpTimerAnimation()
         binding.quitQuizButton.setOnClickListener {
-            findNavController().popBackStack(R.id.welcome_fragment, true)
+            findNavController().popBackStack(R.id.welcome_fragment, false)
         }
     }
 
@@ -157,18 +180,17 @@ class GameFragment : Fragment() {
     private fun showNextQuiz() {
         if (questionId < quizes.size) {
             currentQuestion = quizes[questionId]
-            quizes.shuffle()
             setupQuizView()
         } else {
-            isCancelled = true
             val points = binding.scoreView.text.toString().toInt()
             findNavController().navigate(
                 GameFragmentDirections.actionGameFragmentToGameResult(
                     point = points
-                )
+                ),
+                NavOptions.Builder()
+                    .setPopUpTo(R.id.welcome_fragment, false).build()
             )
         }
     }
-
 
 }

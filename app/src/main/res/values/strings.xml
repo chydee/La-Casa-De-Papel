@@ -12,4 +12,6 @@
     <string name="game_over">Game Over!</string>
     <string name="your_point">Your Point</string>
     <string name="play_again">Play Again</string>
+
+    <string name="share_success_text">I just played #MoneyHeistTrivia and scored %1$d points. Want to try your knowledge? Download on Playstore: <a>https://play.google.com/store/apps/details?id=com.chydee.lacasadepapel&amp;hl=en</a> !</string>
 </resources>

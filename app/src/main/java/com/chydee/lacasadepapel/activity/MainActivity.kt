@@ -11,9 +11,10 @@ import com.chydee.lacasadepapel.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val sharedPref = this@MainActivity.getPreferences(Context.MODE_PRIVATE)
         val id = sharedPref!!.getString(getString(R.string.id_key), "")
@@ -27,6 +28,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun finish() {
         super.finish()
+        ActivityNavigator.applyPopAnimationsToPendingTransition(this)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
         ActivityNavigator.applyPopAnimationsToPendingTransition(this)
     }
 }
