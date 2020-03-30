@@ -20,6 +20,9 @@ const val TAG = "OnBoardFragment"
 
 class OnBoardFragment : Fragment() {
 
+    private var interval: Long = 100
+    private var count: Int = 5
+
     private lateinit var viewModel: OnBoardViewModel
     private lateinit var binding: OnBoardFragmentBinding
     private var playerName: Editable? = null
@@ -47,7 +50,7 @@ class OnBoardFragment : Fragment() {
                     resources.getDrawable(R.drawable.ic_error)
                 )
             } else {
-                addPlayer()
+                showProgressBar()
             }
 
         }
@@ -77,6 +80,20 @@ class OnBoardFragment : Fragment() {
                 Log.d(TAG, "Unable to add Player : ${exception.message}")
             }
     }
+
+    private fun showProgressBar() {
+        val progressBar = binding.progressBar
+        binding.continueButton.visibility = View.INVISIBLE
+        progressBar.visibility = View.VISIBLE
+        var progress = 0
+        while (progress < 105) {
+            Thread.sleep(interval)
+            progressBar.progress = progress
+            progress += count
+        }
+        addPlayer()
+    }
+
 
 }
 
