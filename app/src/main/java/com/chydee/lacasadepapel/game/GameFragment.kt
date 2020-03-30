@@ -1,6 +1,7 @@
 package com.chydee.lacasadepapel.game
 
 import android.animation.Animator
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -99,6 +100,7 @@ class GameFragment : Fragment() {
                 Log.e("Animation:", "end")
                 //Your code for remove the fragment
                 val points = binding.scoreView.text.toString().toInt()
+                getPlayerId()?.let { viewModel.updatePlayerScore(it, points) }
                 findNavController().navigate(
                     GameFragmentDirections.actionGameFragmentToGameResult(
                         point = points
@@ -183,6 +185,7 @@ class GameFragment : Fragment() {
             setupQuizView()
         } else {
             val points = binding.scoreView.text.toString().toInt()
+            getPlayerId()?.let { viewModel.updatePlayerScore(it, points) }
             findNavController().navigate(
                 GameFragmentDirections.actionGameFragmentToGameResult(
                     point = points
@@ -191,6 +194,11 @@ class GameFragment : Fragment() {
                     .setPopUpTo(R.id.welcome_fragment, false).build()
             )
         }
+    }
+
+    private fun getPlayerId(): String? {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+        return sharedPref!!.getString(getString(R.string.id_key), "")
     }
 
 }
