@@ -7,6 +7,15 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
+
+    signingConfigs {
+        config {
+            storeFile file('C:\\Users\\Chydee\\AndroidStudioProjects\\LaCasaDePapel\\keystore\\android.jks')
+            storePassword 'lucidDreams577'
+            keyAlias = 'MoneyHeistKey'
+            keyPassword 'lucidDreams577'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
