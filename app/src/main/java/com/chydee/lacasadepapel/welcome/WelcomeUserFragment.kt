@@ -17,9 +17,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.chydee.lacasadepapel.Player
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.databinding.WelcomeUserFragmentBinding
+import com.chydee.lacasadepapel.models.Player
 import com.google.firebase.firestore.ktx.toObject
 
 

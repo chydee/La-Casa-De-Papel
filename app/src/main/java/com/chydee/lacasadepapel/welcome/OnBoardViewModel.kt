@@ -1,7 +1,7 @@
 package com.chydee.lacasadepapel.welcome
 
 import androidx.lifecycle.ViewModel
-import com.chydee.lacasadepapel.Player
+import com.chydee.lacasadepapel.models.Player
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.firestore

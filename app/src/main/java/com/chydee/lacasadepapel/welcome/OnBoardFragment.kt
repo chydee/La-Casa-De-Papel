@@ -12,9 +12,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.chydee.lacasadepapel.Player
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.databinding.OnBoardFragmentBinding
+import com.chydee.lacasadepapel.models.Player
 
 const val TAG = "OnBoardFragment"
 
@@ -62,7 +62,12 @@ class OnBoardFragment : Fragment() {
     }
 
     private fun addPlayer() {
-        viewModel.addPlayer(Player(name = playerName.toString(), score = 0))
+        viewModel.addPlayer(
+            Player(
+                name = playerName.toString(),
+                score = 0
+            )
+        )
             .addOnSuccessListener { documentReference ->
                 savePlayerId(documentReference.id)
                 Log.d(TAG, "Player ${documentReference.id} has been added")
