@@ -1,42 +1,42 @@
-package com.chydee.lacasadepapel.welcome
+package com.chydee.lacasadepapel.ui.game
 
 import android.content.Context
+import android.content.Intent
 import android.media.AudioManager
-import android.media.AudioManager.OnAudioFocusChangeListener
 import android.media.MediaPlayer
-import android.media.MediaPlayer.OnCompletionListener
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.app.ShareCompat
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.chydee.lacasadepapel.R
-import com.chydee.lacasadepapel.databinding.WelcomeUserFragmentBinding
-import com.chydee.lacasadepapel.models.Player
-import com.google.firebase.firestore.ktx.toObject
+import com.chydee.lacasadepapel.databinding.GameResultFragmentBinding
 
 
-@Suppress("DEPRECATION")
-class WelcomeUserFragment : Fragment() {
+class GameResult : Fragment() {
 
-    private lateinit var viewModel: WelcomeUserViewModel
+    val args: GameResultArgs by navArgs()
+
+    private lateinit var viewModel: GameResultViewModel
+    private lateinit var binding: GameResultFragmentBinding
+
     private var mediaPlayer: MediaPlayer? = null
     private var audioManager: AudioManager? = null
-    private lateinit var binding: WelcomeUserFragmentBinding
 
     /**
      * This listener gets triggered whenever the audio focus changes
      * (i.e., we gain or lose audio focus because of another app or device).
      */
     private val mOnAudioFocusChangeListener =
-        OnAudioFocusChangeListener { focusChange ->
+        AudioManager.OnAudioFocusChangeListener { focusChange ->
             if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
                 focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK
             ) {
@@ -64,70 +64,9 @@ class WelcomeUserFragment : Fragment() {
      * playing the audio file.
      */
     private val mCompletionListener =
-        OnCompletionListener { // Now that the sound file has finished playing, release the media player resources.
+        MediaPlayer.OnCompletionListener { // Now that the sound file has finished playing, release the media player resources.
             releaseMediaPlayer()
         }
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.welcome_user_fragment, container, false)
-        // Specify the current activity as the lifecycle owner of the binding. This is used so that
-        // the binding can observe LiveData updates
-        binding.lifecycleOwner = this
-        return binding.root
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // This callback will only be called when MyFragment is at least Started.
-        val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true /* enabled by default */) {
-                override fun handleOnBackPressed() {
-                    // findNavController().navigate(GameResultDirections.actionGameResultToWelcomeUserFragment())
-                    findNavController().popBackStack(R.id.on_boarding_fragment, true)
-                }
-            }
-        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-
-        // The callback can be enabled or disabled here or in the lambda
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(WelcomeUserViewModel::class.java)
-        // Create and setup the {@link AudioManager} to request audio focus
-        audioManager = activity!!.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        requestFocus()
-        val get = viewModel.getPlayerData(getPlayerId()!!)
-        get.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                val document = task.result?.toObject<Player>()
-                Log.d("Welcome", "DocumentSnapshot data: $document")
-                viewModel._playerName = document?.name!!//documentSnapshot["name"].toString()
-                val score = document.score
-                viewModel._playerScore = score!!.toString()
-                binding.playerNameTextView.text = viewModel._playerName
-                binding.playerCurrentScore.text = viewModel._playerScore
-            } else {
-                Toast.makeText(context, "Profile Creation Cancelled", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        binding.startGameBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_welcomeUserFragment_to_gameFragment)
-        }
-
-    }
-
-    private fun getPlayerId(): String? {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
-        return sharedPref!!.getString(getString(R.string.id_key), "")
-    }
 
     private fun requestFocus() {
         // Request audio focus so in order to play the audio file. The app needs to play a
@@ -143,7 +82,7 @@ class WelcomeUserFragment : Fragment() {
 
             // Create and setup the {@link MediaPlayer} for the audio resource associated
             // with the current word
-            mediaPlayer = MediaPlayer.create(context, R.raw.intro)
+            mediaPlayer = MediaPlayer.create(context, R.raw.ciao)
             mediaPlayer!!.start() // no need to call prepare(); create() does that for you
 
             // Setup a listener on the media player, so that we can stop and release the
@@ -175,10 +114,65 @@ class WelcomeUserFragment : Fragment() {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // This callback will only be called when MyFragment is at least Started.
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    // findNavController().navigate(GameResultDirections.actionGameResultToWelcomeUserFragment())
+                    findNavController().popBackStack(R.id.welcome_fragment, true)
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
+        // The callback can be enabled or disabled here or in the lambda
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.game_result_fragment, container, false)
+
+        return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(GameResultViewModel::class.java)
+        // Create and setup the {@link AudioManager} to request audio focus
+        audioManager = activity!!.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        requestFocus()
+        binding.scoreView.text = args.point.toString()
+        if (null == getShareIntent()?.resolveActivity(activity!!.packageManager)) {
+            binding.shareBtn.isVisible = false
+        }
+        binding.shareBtn.setOnClickListener { shareSuccess() }
+        binding.playAgain.setOnClickListener {
+            findNavController().navigate(GameResultDirections.actionGameResultToWelcomeUserFragment())
+        }
+        // The callback can be enabled or disabled here or in handleOnBackPressed()
+    }
+
     override fun onStop() {
         super.onStop()
         releaseMediaPlayer()
     }
 
+    private fun getShareIntent(): Intent? {
+        return activity?.let {
+            ShareCompat.IntentBuilder.from(it)
+                .setText(getString(R.string.share_success_text, args.point)).setType("text/plain")
+                .intent
+        }
+    }
+
+    private fun shareSuccess() {
+        startActivity(getShareIntent())
+    }
+
 
 }
+

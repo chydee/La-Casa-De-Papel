@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@color/secondaryColor"
         android:clipToPadding="true"
-        tools:context=".game.GameFragment">
+        tools:context=".ui.game.GameFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"

@@ -1,4 +1,4 @@
-package com.chydee.lacasadepapel.activity
+package com.chydee.lacasadepapel.ui.activity
 
 import android.content.Context
 import android.os.Bundle

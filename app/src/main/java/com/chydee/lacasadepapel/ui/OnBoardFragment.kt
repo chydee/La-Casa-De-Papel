@@ -1,4 +1,4 @@
-package com.chydee.lacasadepapel.welcome
+package com.chydee.lacasadepapel.ui
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.databinding.OnBoardFragmentBinding
-import com.chydee.lacasadepapel.models.Player
+import com.chydee.lacasadepapel.ui.models.Player
 
 const val TAG = "OnBoardFragment"
 

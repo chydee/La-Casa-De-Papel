@@ -1,4 +1,4 @@
-package com.chydee.lacasadepapel.ranking
+package com.chydee.lacasadepapel.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

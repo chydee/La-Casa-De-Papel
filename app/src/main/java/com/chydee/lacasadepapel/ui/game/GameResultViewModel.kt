@@ -1,4 +1,4 @@
-package com.chydee.lacasadepapel.game
+package com.chydee.lacasadepapel.ui.game
 
 import androidx.lifecycle.ViewModel
 

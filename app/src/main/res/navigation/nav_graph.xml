@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/onBoardFragment"
-        android:name="com.chydee.lacasadepapel.welcome.OnBoardFragment"
+        android:name="com.chydee.lacasadepapel.ui.OnBoardFragment"
         android:label="on_board_fragment"
         tools:layout="@layout/on_board_fragment">
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/welcomeUserFragment"
-        android:name="com.chydee.lacasadepapel.welcome.WelcomeUserFragment"
+        android:name="com.chydee.lacasadepapel.ui.WelcomeUserFragment"
         android:label="welcome_user_fragment"
         tools:layout="@layout/welcome_user_fragment">
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.chydee.lacasadepapel.game.GameFragment"
+        android:name="com.chydee.lacasadepapel.ui.game.GameFragment"
         android:label="GameFragment"
         tools:layout="@layout/game_fragment">
         <action
@@ -62,7 +62,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameResult"
-        android:name="com.chydee.lacasadepapel.game.GameResult"
+        android:name="com.chydee.lacasadepapel.ui.game.GameResult"
         android:label="GameResult"
         tools:layout="@layout/game_result_fragment">
         <action
@@ -78,7 +78,7 @@
     </fragment>
     <fragment
         android:id="@+id/leaderBoardFragment"
-        android:name="com.chydee.lacasadepapel.ranking.LeaderBoardFragment"
+        android:name="com.chydee.lacasadepapel.ui.LeaderBoardFragment"
         android:label="LeaderBoardFragment"
         tools:layout="@layout/leader_board_fragment" />
 </navigation>

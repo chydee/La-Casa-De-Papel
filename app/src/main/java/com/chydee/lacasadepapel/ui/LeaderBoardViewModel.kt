@@ -1,4 +1,4 @@
-package com.chydee.lacasadepapel.ranking
+package com.chydee.lacasadepapel.ui
 
 import androidx.lifecycle.ViewModel
 
