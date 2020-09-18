@@ -27,7 +27,7 @@
             android:fontFamily="@font/poppins"
             android:textColor="@color/secondaryTextColor"
             android:padding="8dp"
-            android:text="@string/enter_your_nnickname"
+            android:text="@string/enter_your_nickname"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
