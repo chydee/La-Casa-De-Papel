@@ -157,7 +157,7 @@ class WelcomeUserFragment : Fragment() {
                 mediaPlayer!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
             }
             try {
-                mediaPlayer!!.setOnPreparedListener(MediaPlayer.OnPreparedListener { mp -> mp.start() })
+                mediaPlayer!!.setOnPreparedListener { mp -> mp.start() }
                 mediaPlayer!!.setDataSource("https://res.cloudinary.com/dvscfg5kr/video/upload/v1600469852/LA_CASA_DE_PAPEL_OPENING_SONG_HQ_SOUNDTRACK.mp3")
                 mediaPlayer!!.prepareAsync()
             } catch (e: Exception) {
