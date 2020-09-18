@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.chydee.lacasadepapel.R
+import com.chydee.lacasadepapel.data.Player
 import com.chydee.lacasadepapel.databinding.OnBoardFragmentBinding
-import com.chydee.lacasadepapel.ui.models.Player
 
 const val TAG = "OnBoardFragment"
 
@@ -47,7 +47,7 @@ class OnBoardFragment : Fragment() {
                     ColorStateList.valueOf(resources.getColor(R.color.primaryColor))
                 binding.editTextPlayerName.setError(
                     "Required",
-                    resources.getDrawable(R.drawable.ic_error)
+                    resources.getDrawable(R.drawable.ic_error, null)
                 )
             } else {
                 showProgressBar()
@@ -71,14 +71,15 @@ class OnBoardFragment : Fragment() {
                 score = 0
             )
         )
-            .addOnSuccessListener { documentReference ->
-                savePlayerId(documentReference.id)
-                Log.d(TAG, "Player ${documentReference.id} has been added")
+        viewModel.player.observe(viewLifecycleOwner, {
+            if (it != null) {
+                savePlayerId(it.id)
+                Log.d(TAG, "Player ${it.id} has been added")
                 findNavController().navigate(OnBoardFragmentDirections.actionOnBoardFragmentToWelcomeUserFragment())
+            } else {
+                Log.d(TAG, "Unable to add Player")
             }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "Unable to add Player : ${exception.message}")
-            }
+        })
     }
 
     private fun showProgressBar() {

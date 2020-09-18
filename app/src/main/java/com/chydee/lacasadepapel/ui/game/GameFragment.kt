@@ -15,8 +15,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.chydee.lacasadepapel.R
+import com.chydee.lacasadepapel.data.Quiz
 import com.chydee.lacasadepapel.databinding.GameFragmentBinding
-import com.chydee.lacasadepapel.ui.models.Quiz
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.parcel.RawValue
 import java.util.*

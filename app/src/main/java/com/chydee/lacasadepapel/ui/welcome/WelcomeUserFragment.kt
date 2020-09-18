@@ -1,6 +1,7 @@
-package com.chydee.lacasadepapel.ui
+package com.chydee.lacasadepapel.ui.welcome
 
 import android.content.Context
+import android.media.AudioAttributes
 import android.media.AudioManager
 import android.media.AudioManager.OnAudioFocusChangeListener
 import android.media.MediaPlayer
@@ -18,8 +19,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.chydee.lacasadepapel.R
+import com.chydee.lacasadepapel.data.Player
 import com.chydee.lacasadepapel.databinding.WelcomeUserFragmentBinding
-import com.chydee.lacasadepapel.ui.models.Player
 import com.google.firebase.firestore.ktx.toObject
 
 
@@ -101,7 +102,7 @@ class WelcomeUserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(WelcomeUserViewModel::class.java)
         // Create and setup the {@link AudioManager} to request audio focus
-        audioManager = activity!!.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        audioManager = requireActivity().getSystemService(Context.AUDIO_SERVICE) as AudioManager
         requestFocus()
         val get = viewModel.getPlayerData(getPlayerId()!!)
         get.addOnCompleteListener { task ->
@@ -143,13 +144,31 @@ class WelcomeUserFragment : Fragment() {
 
             // Create and setup the {@link MediaPlayer} for the audio resource associated
             // with the current word
-            mediaPlayer = MediaPlayer.create(context, R.raw.intro)
-            mediaPlayer!!.start() // no need to call prepare(); create() does that for you
+            mediaPlayer = MediaPlayer()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                mediaPlayer!!.setAudioAttributes(
+                    AudioAttributes.Builder()
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                        .setLegacyStreamType(AudioManager.STREAM_MUSIC)
+                        .build()
+                )
+            } else {
+                mediaPlayer!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
+            }
+            try {
+                mediaPlayer!!.setOnPreparedListener(MediaPlayer.OnPreparedListener { mp -> mp.start() })
+                mediaPlayer!!.setDataSource("https://res.cloudinary.com/dvscfg5kr/video/upload/v1600469852/LA_CASA_DE_PAPEL_OPENING_SONG_HQ_SOUNDTRACK.mp3")
+                mediaPlayer!!.prepareAsync()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
 
             // Setup a listener on the media player, so that we can stop and release the
             // media player once the sound has finished playing.
             mediaPlayer!!.setOnCompletionListener(mCompletionListener)
         }
+
     }
 
     /**

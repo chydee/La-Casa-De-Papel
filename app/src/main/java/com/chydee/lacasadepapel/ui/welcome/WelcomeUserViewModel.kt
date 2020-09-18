@@ -1,4 +1,4 @@
-package com.chydee.lacasadepapel.ui
+package com.chydee.lacasadepapel.ui.welcome
 
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.Task

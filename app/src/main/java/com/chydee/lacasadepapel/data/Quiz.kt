@@ -1,4 +1,4 @@
-package com.chydee.lacasadepapel.ui.models
+package com.chydee.lacasadepapel.data
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

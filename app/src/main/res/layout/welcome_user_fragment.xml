@@ -7,7 +7,7 @@
 
         <variable
             name="welcomeViewModel"
-            type="com.chydee.lacasadepapel.ui.WelcomeUserViewModel" />
+            type="com.chydee.lacasadepapel.ui.welcome.WelcomeUserViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         style="@style/WelcomeTextStyle"
-        tools:context=".ui.WelcomeUserFragment">
+        tools:context=".ui.welcome.WelcomeUserFragment">
 
         <TextView
             android:id="@+id/welcome_msg"

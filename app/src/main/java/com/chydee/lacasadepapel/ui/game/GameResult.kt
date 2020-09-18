@@ -2,8 +2,10 @@ package com.chydee.lacasadepapel.ui.game
 
 import android.content.Context
 import android.content.Intent
+import android.media.AudioAttributes
 import android.media.AudioManager
 import android.media.MediaPlayer
+import android.media.MediaPlayer.OnPreparedListener
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +16,6 @@ import androidx.core.app.ShareCompat
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.chydee.lacasadepapel.R
@@ -25,7 +26,6 @@ class GameResult : Fragment() {
 
     val args: GameResultArgs by navArgs()
 
-    private lateinit var viewModel: GameResultViewModel
     private lateinit var binding: GameResultFragmentBinding
 
     private var mediaPlayer: MediaPlayer? = null
@@ -82,13 +82,31 @@ class GameResult : Fragment() {
 
             // Create and setup the {@link MediaPlayer} for the audio resource associated
             // with the current word
-            mediaPlayer = MediaPlayer.create(context, R.raw.ciao)
-            mediaPlayer!!.start() // no need to call prepare(); create() does that for you
+            mediaPlayer = MediaPlayer()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                mediaPlayer!!.setAudioAttributes(
+                    AudioAttributes.Builder()
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                        .setLegacyStreamType(AudioManager.STREAM_MUSIC)
+                        .build()
+                )
+            } else {
+                mediaPlayer!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
+            }
+            try {
+                mediaPlayer!!.setOnPreparedListener(OnPreparedListener { mp -> mp.start() })
+                mediaPlayer!!.setDataSource("https://res.cloudinary.com/dvscfg5kr/video/upload/v1600469644/La_casa_de_papel_-_Bella_Ciao.mp3")
+                mediaPlayer!!.prepareAsync()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
 
             // Setup a listener on the media player, so that we can stop and release the
             // media player once the sound has finished playing.
             mediaPlayer!!.setOnCompletionListener(mCompletionListener)
         }
+
     }
 
     /**
@@ -135,18 +153,16 @@ class GameResult : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.game_result_fragment, container, false)
-
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(GameResultViewModel::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         // Create and setup the {@link AudioManager} to request audio focus
-        audioManager = activity!!.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        audioManager = requireActivity().getSystemService(Context.AUDIO_SERVICE) as AudioManager
         requestFocus()
         binding.scoreView.text = args.point.toString()
-        if (null == getShareIntent()?.resolveActivity(activity!!.packageManager)) {
+        if (null == getShareIntent()?.resolveActivity(requireActivity().packageManager)) {
             binding.shareBtn.isVisible = false
         }
         binding.shareBtn.setOnClickListener { shareSuccess() }
