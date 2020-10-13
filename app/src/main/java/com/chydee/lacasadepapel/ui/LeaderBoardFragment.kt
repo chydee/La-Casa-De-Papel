@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.chydee.lacasadepapel.R
+import com.chydee.lacasadepapel.ui.base.BaseFragment
 
-class LeaderBoardFragment : Fragment() {
+class LeaderBoardFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = LeaderBoardFragment()

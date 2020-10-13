@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 
 open class BaseFragment : Fragment() {
     private var mediaPlayer: MediaPlayer? = null
-    private var audioManager: AudioManager? = null
+    private lateinit var audioManager: AudioManager
 
     /**
      * This listener gets triggered whenever the audio focus changes
@@ -53,15 +53,15 @@ open class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Create and setup the {@link AudioManager} to request audio focus
-        audioManager = requireActivity().getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        requestFocus("")
+        audioManager = activity?.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        // requestFocus("https://res.cloudinary.com/dvscfg5kr/video/upload/v1600469852/LA_CASA_DE_PAPEL_OPENING_SONG_HQ_SOUNDTRACK.mp3")
     }
 
     fun requestFocus(audioUrl: String) {
         // Request audio focus so in order to play the audio file. The app needs to play a
         // short audio file, so we will request audio focus with a short amount of time
         // with AUDIOFOCUS_GAIN_TRANSIENT.
-        val result: Int = audioManager!!.requestAudioFocus(
+        val result: Int = audioManager.requestAudioFocus(
             mOnAudioFocusChangeListener,
             AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT
         )
@@ -116,7 +116,7 @@ open class BaseFragment : Fragment() {
             // Regardless of whether or not we were granted audio focus, abandon it. This also
             // unregisters the AudioFocusChangeListener so we don't get anymore callbacks.
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                audioManager!!.abandonAudioFocus(mOnAudioFocusChangeListener)
+                audioManager.abandonAudioFocus(mOnAudioFocusChangeListener)
             }
         }
     }

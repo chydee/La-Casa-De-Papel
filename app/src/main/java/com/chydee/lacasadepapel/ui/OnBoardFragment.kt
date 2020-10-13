@@ -8,16 +8,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.data.Player
 import com.chydee.lacasadepapel.databinding.OnBoardFragmentBinding
+import com.chydee.lacasadepapel.ui.base.BaseFragment
 
 const val TAG = "OnBoardFragment"
 
-class OnBoardFragment : Fragment() {
+class OnBoardFragment : BaseFragment() {
 
     private var interval: Long = 100
     private var count: Int = 5

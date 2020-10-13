@@ -46,7 +46,7 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         vmFactory = ViewModelFactory(Firebase.firestore)
-        viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+        viewModel = ViewModelProvider(this, vmFactory).get(GameViewModel::class.java)
         quizes = ArrayList()
         viewModel.getQuiz().addOnSuccessListener { documents ->
             for (docs in documents) {
