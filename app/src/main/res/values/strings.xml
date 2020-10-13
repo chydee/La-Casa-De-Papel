@@ -16,4 +16,5 @@
     <string name="share_success_text">I just played #MoneyHeistTrivia and scored %1$d points. Want to try your knowledge? Download on Playstore: <a>https://play.google.com/store/apps/details?id=com.chydee.lacasadepapel&amp;hl=en</a> !</string>
     <string name="you_re_online">You\'re online</string>
     <string name="you_re_offline">You\'re offline</string>
+    <string name="default_point">0</string>
 </resources>

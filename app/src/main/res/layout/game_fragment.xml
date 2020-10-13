@@ -3,10 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/quit_quiz_button"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -39,57 +35,54 @@
 
             <TextView
                 android:id="@+id/question_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/dp16"
                 android:fontFamily="@font/poppins_semibold"
-                android:padding="20dp"
+                android:padding="@dimen/dp16"
                 android:shadowColor="@color/secondaryTextColor"
-                android:shadowDx="-4"
-                android:shadowDy="-4"
-                android:shadowRadius="3"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
                 android:textColor="@color/secondaryColor"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.35000002"
+                android:textSize="@dimen/sp18"
+                app:layout_constraintBottom_toTopOf="@+id/time_bomb"
+                app:layout_constraintEnd_toEndOf="@+id/score_view"
+                app:layout_constraintStart_toStartOf="@+id/quit_quiz_button"
+                app:layout_constraintTop_toBottomOf="@+id/score_view"
                 tools:text="Who is the father, mother, brother, sisetr, uncle, familiar, of the la professor?" />
 
-            <Button
+            <TextView
                 android:id="@+id/score_view"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="@dimen/dp16"
+                android:layout_marginEnd="@dimen/dp16"
                 android:backgroundTint="@android:color/transparent"
                 android:elevation="0dp"
                 android:fontFamily="@font/poppins_bold"
-                android:text="0"
+                android:drawablePadding="@dimen/dp8"
+                android:gravity="center"
+                android:paddingStart="@dimen/dp8"
+                android:paddingEnd="@dimen/dp0"
+                android:text="@string/default_point"
                 android:textColor="@color/secondaryColor"
-                android:textSize="20sp"
-                app:icon="@drawable/ic_euro"
-                app:iconGravity="textEnd"
-                app:iconTint="@null"
+                android:textAlignment="gravity"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="@dimen/sp18"
+                app:drawableEndCompat="@drawable/ic_euro"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/time_bomb"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="@dimen/dp8"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.9"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/question_text_view"
+                app:layout_constraintEnd_toEndOf="@+id/question_text_view"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/question_text_view"
                 app:lottie_autoPlay="false"
                 app:lottie_fileName="timer_bomb.json"
                 app:lottie_loop="false"
@@ -103,10 +96,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/dp16"
             android:layout_marginEnd="16dp"
             android:orientation="vertical"
-            android:padding="20dp"
+            android:padding="@dimen/dp20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline5">
@@ -117,13 +110,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
-                android:padding="8dp"
+                android:padding="@dimen/dp8"
                 android:textAllCaps="false"
                 android:textColor="@color/secondaryTextColor"
-                android:textSize="18sp"
-                app:cornerRadius="20dp"
+                android:textSize="@dimen/sp18"
+                app:cornerRadius="@dimen/dp20"
                 app:strokeColor="@color/secondaryTextColor"
-                app:strokeWidth="2dp"
+                app:strokeWidth="@dimen/dp2"
                 tools:text="Option A" />
 
             <com.google.android.material.button.MaterialButton
@@ -174,29 +167,12 @@
         </LinearLayout>
 
 
-        <!--<TextView
-            android:id="@+id/trade_mark"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_bold"
-            android:shadowColor="@color/primaryDarkColor"
-            android:shadowDx="-8"
-            android:shadowDy="-4"
-            android:shadowRadius="5"
-            android:text="@string/bella_ciao"
-            android:textAlignment="center"
-            android:textColor="@color/primaryColor"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />-->
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="400dp" />
+            app:layout_constraintGuide_begin="300dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
