@@ -5,12 +5,8 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Source
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
-class WelcomeUserViewModel : ViewModel() {
-    private var db: FirebaseFirestore = Firebase.firestore
-
+class WelcomeUserViewModel constructor(private val db: FirebaseFirestore) : ViewModel() {
     var _playerName = String()
     var _playerScore = String()
 

@@ -3,51 +3,36 @@ package com.chydee.lacasadepapel.ui.game
 import android.animation.Animator
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.data.Quiz
 import com.chydee.lacasadepapel.databinding.GameFragmentBinding
+import com.chydee.lacasadepapel.ui.ViewModelFactory
 import com.google.android.material.button.MaterialButton
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.parcel.RawValue
 import java.util.*
 
 
 class GameFragment : Fragment() {
     private lateinit var viewModel: GameViewModel
+    private lateinit var vmFactory: ViewModelFactory
+
     private lateinit var binding: GameFragmentBinding
     private lateinit var quizes: ArrayList<Quiz>
 
-    private var currentQuestion: Quiz? = null
+    private lateinit var currentQuestion: Quiz
     private var questionId = 0
     private var score = 0
     private var scoreIncrement = 5
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // This callback will only be called when MyFragment is at least Started.
-        val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true /* enabled by default */) {
-                override fun handleOnBackPressed() {
-                    // findNavController().navigate(GameResultDirections.actionGameResultToWelcomeUserFragment())
-                    findNavController().popBackStack(R.id.welcome_fragment, false)
-                }
-            }
-        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-
-        // The callback can be enabled or disabled here or in the lambda
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,8 +43,9 @@ class GameFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        vmFactory = ViewModelFactory(Firebase.firestore)
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
         quizes = ArrayList()
         viewModel.getQuiz().addOnSuccessListener { documents ->
@@ -82,8 +68,16 @@ class GameFragment : Fragment() {
 
         }
         setUpTimerAnimation()
+        handleClicks()
+    }
+
+    private fun handleClicks() {
         binding.quitQuizButton.setOnClickListener {
-            findNavController().popBackStack(R.id.welcome_fragment, false)
+            findNavController().popBackStack()
+        }
+
+        binding.nextButton.setOnClickListener {
+            showNextQuiz()
         }
     }
 
@@ -94,11 +88,11 @@ class GameFragment : Fragment() {
         binding.timeBomb.addAnimatorListener(object :
             Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator) {
-                Log.e("Animation:", "start")
+                Log.e("Animation:", "started")
             }
 
             override fun onAnimationEnd(animation: Animator) {
-                Log.e("Animation:", "end")
+                Log.e("Animation:", "ended")
                 //Your code for remove the fragment
                 val points = binding.scoreView.text.toString().toInt()
                 getPlayerId()?.let { viewModel.updatePlayerScore(it, points) }
@@ -107,7 +101,6 @@ class GameFragment : Fragment() {
                         point = points
                     )
                 )
-
             }
 
             override fun onAnimationCancel(animation: Animator) {
@@ -121,12 +114,11 @@ class GameFragment : Fragment() {
     }
 
     private fun setupQuizView() {
-        binding.questionTextView.text = currentQuestion?.question as CharSequence?
-        binding.btnFirstAnswer.text = currentQuestion?.options?.get(0) as CharSequence?
-        binding.btnSecondAnswer.text = currentQuestion?.options?.get(1) as CharSequence?
-        binding.btnThirdAnswer.text = currentQuestion?.options?.get(2) as CharSequence?
-        binding.btnFourthAnswer.text = currentQuestion?.options?.get(3) as CharSequence?
-
+        binding.questionTextView.text = currentQuestion.question as CharSequence
+        binding.btnFirstAnswer.text = currentQuestion.options[0] as CharSequence
+        binding.btnSecondAnswer.text = currentQuestion.options[1] as CharSequence
+        binding.btnThirdAnswer.text = currentQuestion.options[2] as CharSequence
+        binding.btnFourthAnswer.text = currentQuestion.options[3] as CharSequence
         questionId++
     }
 
@@ -162,17 +154,10 @@ class GameFragment : Fragment() {
         val isAnswer = checkAnswer(answer)
         if (isAnswer) button.setStrokeColorResource(R.color.green)
         else button.setStrokeColorResource(R.color.primaryColor)
-
-        val handler = Handler()
-        handler.postDelayed({
-            button.setStrokeColorResource(R.color.secondaryTextColor)
-            showNextQuiz()
-        }, 300)
     }
 
     private fun checkAnswer(answer: String): Boolean {
-        if (currentQuestion?.answer?.equals(answer)!!) {
-            //TODO Increment Score, and set the score
+        if (currentQuestion.answer?.equals(answer)!!) {
             score += scoreIncrement
             binding.scoreView.text = "$score"
             return true
@@ -190,9 +175,7 @@ class GameFragment : Fragment() {
             findNavController().navigate(
                 GameFragmentDirections.actionGameFragmentToGameResult(
                     point = points
-                ),
-                NavOptions.Builder()
-                    .setPopUpTo(R.id.welcome_fragment, false).build()
+                )
             )
         }
     }
