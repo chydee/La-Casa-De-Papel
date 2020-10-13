@@ -4,10 +4,11 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.Network
-import android.net.wifi.WifiManager
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ActivityNavigator
 import androidx.navigation.Navigation
@@ -62,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                     override fun onAvailable(network: Network) {
                         runOnUiThread {
                             kotlin.run {
-                                // binding.connectivityStatus.text = getString(R.string.you_re_online) // Connection available
+                                binding.connectivityStatus.visibility = View.GONE
                             }
                         }
                     }
@@ -70,19 +71,26 @@ class MainActivity : AppCompatActivity() {
                     override fun onLost(network: Network) {
                         runOnUiThread {
                             kotlin.run {
-                                // binding.connectivityStatus.text = getString(R.string.you_re_offline) // Connection lost
+                                binding.connectivityStatus.apply {
+                                    visibility = View.VISIBLE
+                                    text = getString(R.string.you_re_offline) // Connection lost
+                                    setBackgroundColor(Color.RED)
+                                }
                             }
                         }
                     }
-                }
-                )
+                })
             } else {
                 val nwInfo = cm.activeNetworkInfo
                 val isConnected = nwInfo != null && nwInfo.isConnectedOrConnecting
                 if (isConnected) {
-                    // binding.connectivityStatus.text = getString(R.string.you_re_online)
+                    binding.connectivityStatus.visibility = View.GONE
                 } else {
-                    binding.connectivityStatus.text = getString(R.string.you_re_offline)
+                    binding.connectivityStatus.apply {
+                        visibility = View.VISIBLE
+                        text = getString(R.string.you_re_offline) // Connection lost
+                        setBackgroundColor(Color.RED)
+                    }
                 }
             }
 
