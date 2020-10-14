@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.chydee.lacasadepapel.databinding.WelcomeUserFragmentBinding
-import com.chydee.lacasadepapel.ui.ViewModelFactory
 import com.chydee.lacasadepapel.ui.base.BaseFragment
+import com.chydee.lacasadepapel.utils.ViewModelFactory
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 

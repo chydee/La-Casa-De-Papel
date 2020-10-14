@@ -1,7 +1,8 @@
-package com.chydee.lacasadepapel.ui
+package com.chydee.lacasadepapel.utils
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.chydee.lacasadepapel.ui.OnBoardViewModel
 import com.chydee.lacasadepapel.ui.game.GameViewModel
 import com.chydee.lacasadepapel.ui.welcome.WelcomeUserViewModel
 import com.google.firebase.firestore.FirebaseFirestore

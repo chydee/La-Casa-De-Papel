@@ -17,8 +17,8 @@ import com.airbnb.lottie.LottieAnimationView
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.data.Quiz
 import com.chydee.lacasadepapel.databinding.GameFragmentBinding
-import com.chydee.lacasadepapel.ui.ViewModelFactory
 import com.chydee.lacasadepapel.ui.base.BaseFragment
+import com.chydee.lacasadepapel.utils.ViewModelFactory
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
