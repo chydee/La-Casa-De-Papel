@@ -13,10 +13,10 @@
         <action
             android:id="@+id/action_onBoardFragment_to_welcomeUserFragment"
             app:destination="@id/welcomeUserFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
-            app:exitAnim="@anim/fragment_close_exit"
-            app:popEnterAnim="@anim/fragment_fade_enter"
-            app:popExitAnim="@anim/fragment_fade_exit"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/onBoardFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -28,15 +28,19 @@
         <action
             android:id="@+id/action_welcomeUserFragment_to_gameFragment"
             app:destination="@id/gameFragment"
-            app:enterAnim="@anim/fragment_open_enter"
-            app:exitAnim="@anim/fragment_close_exit"
-            app:popEnterAnim="@android:anim/fade_in"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/welcomeUserFragment"
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_welcomeUserFragment_to_leaderBoardFragment"
             app:destination="@id/leaderBoardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/welcomeUserFragment"
             app:popUpToInclusive="false" />
     </fragment>
@@ -50,8 +54,8 @@
             app:destination="@id/gameResult"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/welcomeUserFragment"
             app:popUpToInclusive="false">
             <argument
@@ -62,10 +66,10 @@
         <action
             android:id="@+id/action_gameFragment_to_welcomeUserFragment"
             app:destination="@id/welcomeUserFragment"
-            app:enterAnim="@anim/fragment_close_enter"
-            app:exitAnim="@anim/fragment_close_exit"
-            app:popEnterAnim="@anim/fragment_open_enter"
-            app:popExitAnim="@anim/fragment_open_exit" />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/gameResult"
@@ -75,12 +79,22 @@
         <action
             android:id="@+id/action_gameResult_to_welcomeUserFragment"
             app:destination="@id/welcomeUserFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
             app:launchSingleTop="true"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/gameResult"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_gameResult_to_leaderBoardFragment"
-            app:destination="@id/leaderBoardFragment" />
+            app:destination="@id/leaderBoardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@id/gameResult"
+            app:popUpToInclusive="false" />
         <argument
             android:name="point"
             android:defaultValue="0"
