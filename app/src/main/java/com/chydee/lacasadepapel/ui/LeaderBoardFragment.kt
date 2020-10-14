@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.ui.base.BaseFragment
 
@@ -23,10 +23,8 @@ class LeaderBoardFragment : BaseFragment() {
         return inflater.inflate(R.layout.leader_board_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(LeaderBoardViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(LeaderBoardViewModel::class.java)
     }
-
 }

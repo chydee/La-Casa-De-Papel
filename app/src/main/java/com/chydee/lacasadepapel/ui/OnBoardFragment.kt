@@ -1,6 +1,5 @@
 package com.chydee.lacasadepapel.ui
 
-import android.content.Context
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
@@ -42,8 +41,10 @@ class OnBoardFragment : BaseFragment() {
         playerName = binding.editTextPlayerName.text
         binding.continueButton.setOnClickListener {
             if (binding.editTextPlayerName.text.isEmpty() || binding.editTextPlayerName.text.toString() == "") {
-                binding.editTextPlayerName.backgroundTintList =
-                    ColorStateList.valueOf(resources.getColor(R.color.primaryColor))
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    binding.editTextPlayerName.backgroundTintList =
+                        ColorStateList.valueOf(resources.getColor(R.color.primaryColor, null))
+                }
                 binding.editTextPlayerName.setError(
                     "Required",
                     resources.getDrawable(R.drawable.ic_error, null)
@@ -51,15 +52,6 @@ class OnBoardFragment : BaseFragment() {
             } else {
                 showProgressBar()
             }
-
-        }
-    }
-
-    private fun savePlayerId(id: String) {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        with(sharedPref.edit()) {
-            putString(getString(R.string.id_key), id)
-            apply()
         }
     }
 

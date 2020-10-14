@@ -8,6 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.chydee.lacasadepapel.R
 
 open class BaseFragment : Fragment() {
     private var mediaPlayer: MediaPlayer? = null
@@ -119,6 +120,19 @@ open class BaseFragment : Fragment() {
                 audioManager.abandonAudioFocus(mOnAudioFocusChangeListener)
             }
         }
+    }
+
+    fun savePlayerId(id: String) {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        with(sharedPref.edit()) {
+            putString(getString(R.string.id_key), id)
+            apply()
+        }
+    }
+
+    fun getPlayerId(): String? {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+        return sharedPref!!.getString(getString(R.string.id_key), "")
     }
 
     override fun onStop() {
