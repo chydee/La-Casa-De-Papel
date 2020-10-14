@@ -3,10 +3,12 @@ package com.chydee.lacasadepapel.ui.game
 import android.animation.Animator
 import android.content.Context
 import android.os.Bundle
+import android.os.Vibrator
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -34,6 +36,8 @@ class GameFragment : Fragment() {
     private var score = 0
     private var scoreIncrement = 5
 
+    private lateinit var vibrator: Vibrator
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,6 +52,7 @@ class GameFragment : Fragment() {
         vmFactory = ViewModelFactory(Firebase.firestore)
         viewModel = ViewModelProvider(this, vmFactory).get(GameViewModel::class.java)
         quizes = ArrayList()
+        vibrator = requireActivity().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         viewModel.getQuiz().addOnSuccessListener { documents ->
             for (docs in documents) {
                 quizes.add(
@@ -152,8 +157,13 @@ class GameFragment : Fragment() {
 
     private fun answerEvaluator(button: MaterialButton, answer: String) {
         val isAnswer = checkAnswer(answer)
-        if (isAnswer) button.setStrokeColorResource(R.color.green)
-        else button.setStrokeColorResource(R.color.primaryColor)
+        if (isAnswer) {
+            button.setStrokeColorResource(R.color.green)
+        } else {
+            button.setStrokeColorResource(R.color.primaryColor)
+            vibrator.vibrate(100)
+            button.startAnimation(AnimationUtils.loadAnimation(context, R.anim.shake))
+        }
     }
 
     private fun checkAnswer(answer: String): Boolean {
@@ -169,6 +179,7 @@ class GameFragment : Fragment() {
         if (questionId < quizes.size) {
             currentQuestion = quizes[questionId]
             setupQuizView()
+            resetOptions()
         } else {
             val points = binding.scoreView.text.toString().toInt()
             getPlayerId()?.let { viewModel.updatePlayerScore(it, points) }
@@ -183,6 +194,15 @@ class GameFragment : Fragment() {
     private fun getPlayerId(): String? {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
         return sharedPref!!.getString(getString(R.string.id_key), "")
+    }
+
+    private fun resetOptions() {
+        with(binding) {
+            btnFirstAnswer.setStrokeColorResource(R.color.secondaryTextColor)
+            btnSecondAnswer.setStrokeColorResource(R.color.secondaryTextColor)
+            btnThirdAnswer.setStrokeColorResource(R.color.secondaryTextColor)
+            btnFourthAnswer.setStrokeColorResource(R.color.secondaryTextColor)
+        }
     }
 
 }
