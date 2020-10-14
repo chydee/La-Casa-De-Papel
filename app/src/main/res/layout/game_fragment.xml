@@ -110,62 +110,30 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_first_answer"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.OptionsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:padding="@dimen/dp8"
-                    android:textAllCaps="false"
-                    android:textColor="@color/secondaryTextColor"
-                    android:textSize="@dimen/sp18"
-                    app:cornerRadius="@dimen/dp20"
-                    app:strokeColor="@color/secondaryTextColor"
-                    app:strokeWidth="@dimen/dp2"
                     tools:text="Option A" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_second_answer"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.OptionsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:padding="8dp"
-                    android:textAllCaps="false"
-                    android:textColor="@color/secondaryTextColor"
-                    android:textSize="18sp"
-                    app:cornerRadius="20dp"
-                    app:strokeColor="@color/secondaryTextColor"
-                    app:strokeWidth="2dp"
                     tools:text="Option B" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_third_answer"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.OptionsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:padding="8dp"
-                    android:textAllCaps="false"
-                    android:textColor="@color/secondaryTextColor"
-                    android:textSize="18sp"
-                    app:cornerRadius="20dp"
-                    app:strokeColor="@color/secondaryTextColor"
-                    app:strokeWidth="2dp"
                     tools:text="Option C" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_fourth_answer"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.OptionsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:padding="8dp"
-                    android:textAllCaps="false"
-                    android:textColor="@color/secondaryTextColor"
-                    android:textSize="18sp"
-                    app:cornerRadius="20dp"
-                    app:strokeColor="@color/secondaryTextColor"
-                    app:strokeWidth="2dp"
                     tools:text="Option D" />
 
             </LinearLayout>

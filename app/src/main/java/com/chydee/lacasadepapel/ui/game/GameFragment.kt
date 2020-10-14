@@ -9,8 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
@@ -47,7 +45,7 @@ class GameFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.game_fragment, container, false)
+        binding = GameFragmentBinding.inflate(inflater)
         return binding.root
     }
 
@@ -62,7 +60,6 @@ class GameFragment : BaseFragment() {
         viewModel.getQuiz()
         viewModel.quizes.observe(viewLifecycleOwner, {
             if (it != null) {
-                Toast.makeText(context, it.documents.size.toString(), Toast.LENGTH_LONG).show()
                 for (docs in it.documents) {
                     quizes.add(
                         Quiz(
