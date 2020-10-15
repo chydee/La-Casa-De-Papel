@@ -7,7 +7,7 @@
 
         <variable
             name="onBoardingViewModel"
-            type="com.chydee.lacasadepapel.welcome.OnBoardViewModel" />
+            type="com.chydee.lacasadepapel.ui.OnBoardViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/secondaryColor"
-        tools:context=".welcome.OnBoardFragment">
+        tools:context=".ui.OnBoardFragment">
 
         <TextView
             android:id="@+id/intro_text_textview"
@@ -27,7 +27,7 @@
             android:fontFamily="@font/poppins"
             android:textColor="@color/secondaryTextColor"
             android:padding="8dp"
-            android:text="@string/enter_your_nnickname"
+            android:text="@string/enter_your_nickname"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

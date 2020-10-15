@@ -6,13 +6,13 @@
 
         <variable
             name="leaderBoard"
-            type="com.chydee.lacasadepapel.ranking.LeaderBoardViewModel" />
+            type="com.chydee.lacasadepapel.ui.LeaderBoardViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ranking.LeaderBoardFragment">
+        tools:context=".ui.LeaderBoardFragment">
 
         <TextView
             android:layout_width="match_parent"
