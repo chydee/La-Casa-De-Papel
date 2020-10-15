@@ -4,7 +4,7 @@
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
-<p align="center"><img src="img/screenshots.jpg" alt="La Casa De Papel Preview" height="800"></p>
+<p align="center"><img src="img/preview.png" alt="La Casa De Papel Preview" height="800"></p>
 
 La Casa De Papel Trivia is a trivia game app that's based on the popular Money Heist TV show. This app presents modern approach to [Android](https://www.android.com/) application development using [Kotlin](https://kotlinlang.org/) and latest tech-stack.
 
