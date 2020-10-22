@@ -9,14 +9,6 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 android {
 
-     signingConfigs {
-         config {
-             storeFile file('C:\\Users\\xxxxx\\StudioProjects\\La-Casa-De-Papel\\keystore\\android.jks')
-             storePassword 'lucidDreams577'
-             keyAlias = 'MoneyHeistKey'
-             keyPassword 'lucidDreams577'
-         }
-     }
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
