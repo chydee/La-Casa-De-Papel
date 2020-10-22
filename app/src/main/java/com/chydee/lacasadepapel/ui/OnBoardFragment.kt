@@ -13,6 +13,9 @@ import com.chydee.lacasadepapel.R
 import com.chydee.lacasadepapel.data.Player
 import com.chydee.lacasadepapel.databinding.OnBoardFragmentBinding
 import com.chydee.lacasadepapel.ui.base.BaseFragment
+import com.chydee.lacasadepapel.utils.ViewModelFactory
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 const val TAG = "OnBoardFragment"
 
@@ -34,7 +37,10 @@ class OnBoardFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(OnBoardViewModel::class.java)
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelFactory(Firebase.firestore)
+        ).get(OnBoardViewModel::class.java)
         // Specify the current activity as the lifecycle owner of the binding. This is used so that
         // the binding can observe LiveData updates
         binding.lifecycleOwner = this
