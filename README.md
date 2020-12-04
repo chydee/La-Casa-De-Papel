@@ -12,12 +12,12 @@ This project is a step towards leveling up my skills by implementing what I've b
 
 ## Table of Contents
 
--   [Development](https://github.com/chydee/Noted#development)
--   [Design](https://github.com/chydee/Noted#design)
--   [Architecture](https://github.com/chydee/Noted#architecture)
--   [Tech-stack](https://github.com/chydee/Noted#tech-stack)
--   [Author](https://github.com/chydee/Noted#author)
--   [License](https://github.com/chydee/Noted#license)
+-   [Development](https://github.com/chydee/La-Casa-De-Papel#development)
+-   [Design](https://github.com/chydee/La-Casa-De-Papel#design)
+-   [Architecture](https://github.com/chydee/La-Casa-De-Papel#architecture)
+-   [Tech-stack](https://github.com/chydee/La-Casa-De-Papel#tech-stack)
+-   [Author](https://github.com/chydee/La-Casa-De-Papel#author)
+-   [License](https://github.com/chydee/La-Casa-De-Papel#license)
 
 ## Development
 
