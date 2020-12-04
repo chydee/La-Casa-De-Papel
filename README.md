@@ -87,7 +87,6 @@ This project takes advantage of many popular libraries, plugins and tools of the
 ## License
 
 * The preview images were created using 'Previewed' at [Previewed](https://previewed.app/)
-* The illustration images were provided by 'UnDraw' at [UnDraw](https://undraw.co/illustrations)
 * The icons and application icons were created and downloaded at [FlatIcons](https://flaticons.com/)
 
 ```license
