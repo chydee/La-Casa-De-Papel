@@ -12,12 +12,12 @@ This project is a step towards leveling up my skills by implementing what I've b
 
 ## Table of Contents
 
--   [Development](https://github.com/chydee/La-Casa-De-Papel#development)
--   [Design](https://github.com/chydee/La-Casa-De-Papel#design)
--   [Architecture](https://github.com/chydee/La-Casa-De-Papel#architecture)
--   [Tech-stack](https://github.com/chydee/La-Casa-De-Papel#tech-stack)
--   [Author](https://github.com/chydee/La-Casa-De-Papel#author)
--   [License](https://github.com/chydee/La-Casa-De-Papel#license)
+-   [Development](https://github.com/chydee/Noted#development)
+-   [Design](https://github.com/chydee/Noted#design)
+-   [Architecture](https://github.com/chydee/Noted#architecture)
+-   [Tech-stack](https://github.com/chydee/Noted#tech-stack)
+-   [Author](https://github.com/chydee/Noted#author)
+-   [License](https://github.com/chydee/Noted#license)
 
 ## Development
 
@@ -25,15 +25,8 @@ This project is a step towards leveling up my skills by implementing what I've b
 
 First off, you require the latest Android Studio 3.6.0 (or newer) to be able to build the app.
 
-Moreover, to sign your app for release, please refer to `keystore.properties` to find required fields.
+Moreover, to sign your app for release
 
-```properties
-# Signing Config
-signing.store.password=<look>
-signing.key.password=<look>
-signing.key.alias=<look>
-signing.store.file=<look>
-```
 
 ## Design
 
@@ -87,13 +80,14 @@ This project takes advantage of many popular libraries, plugins and tools of the
 **Desmond Ngwuta**
 
 [![Linkedin](https://img.shields.io/badge/-linkedin-grey?logo=linkedin)](https://www.linkedin.com/in/chydeebere/)
-[![Twitter](https://img.shields.io/badge/-twitter-grey?logo=twitter)](https://twitter.com/chydii_)
+[![Twitter](https://img.shields.io/badge/-twitter-grey?logo=twitter)](https://twitter.com/desmondngwuta)
 [![Web](https://img.shields.io/badge/-web-grey?logo=appveyor)](https://chydee.hashnode.dev/)
 
 
 ## License
 
 * The preview images were created using 'Previewed' at [Previewed](https://previewed.app/)
+* The illustration images were provided by 'UnDraw' at [UnDraw](https://undraw.co/illustrations)
 * The icons and application icons were created and downloaded at [FlatIcons](https://flaticons.com/)
 
 ```license
